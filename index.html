@@ -3,45 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yardina404</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Restaurant Name</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-        header { background-color: #4CAF50; color: white; padding: 15px; text-align: center; }
-        footer { background-color: #333; color: white; text-align: center; padding: 10px; position: relative; bottom: 0; width: 100%; }
-        .testimonials { margin: 20px; padding: 20px; border: 1px solid #ddd; border-radius: 5px; }
-        .social-links { margin: 20px; }
-        .social-links a { margin: 0 10px; }
-        .map { width: 100%; height: 400px; }
-        .whatsapp-btn { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; padding: 10px; border-radius: 50%; }
-    </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to Yardina404</h1>
-        <p>Your go-to place for modern solutions.</p>
+        <h1>Welcome to Our Restaurant</h1>
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#location">Location</a></li>
+                <li><a href="#order">Order Now</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
     <main>
-        <section class="testimonials">
-            <h2>Testimonials</h2>
-            <p>"Absolutely amazing service! Highly recommend!" - A satisfied customer</p>
-            <p>"Yardina404 transformed my project into something beautiful!" - Another happy client</p>
+        <section id="menu">
+            <h2>Our Menu</h2>
+            <div class="menu-item">
+                <img src="path/to/image1.jpg" alt="Menu Item 1">
+                <h3>Menu Item 1</h3>
+                <p>Description of Menu Item 1.</p>
+                <span>Price: $XX.XX</span>
+            </div>
+            <div class="menu-item">
+                <img src="path/to/image2.jpg" alt="Menu Item 2">
+                <h3>Menu Item 2</h3>
+                <p>Description of Menu Item 2.</p>
+                <span>Price: $XX.XX</span>
+            </div>
+            <!-- Repeat for additional menu items -->
         </section>
-        <section class="map">
-            <h2>Our Location</h2>
-            <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387190.2799104659!2d-74.25987468744345!3d40.69767006455699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a3173c9ea15%3A0x9797c43fbda8f2d5!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1618708030649!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+        <section id="gallery">
+            <h2>Gallery</h2>
+            <div class="gallery-item">
+                <img src="path/to/gallery-image1.jpg" alt="Gallery Image 1">
+            </div>
+            <div class="gallery-item">
+                <img src="path/to/gallery-image2.jpg" alt="Gallery Image 2">
+            </div>
+            <!-- Repeat for additional gallery images -->
         </section>
-        <section class="social-links">
-            <h2>Follow Us</h2>
-            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
-            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
-            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+        <section id="testimonials">
+            <h2>Customer Testimonials</h2>
+            <blockquote>
+                <p>Great food and service!</p>
+                <cite>- Happy Customer</cite>
+            </blockquote>
+            <blockquote>
+                <p>Delicious food and cozy atmosphere!</p>
+                <cite>- Another Happy Customer</cite>
+            </blockquote>
+            <!-- Repeat for additional testimonials -->
+        </section>
+        <section id="location">
+            <h2>Location & Hours</h2>
+            <p>123 Restaurant St., Food City, FC 12345</p>
+            <p>Hours: Mon-Sun 10:00 AM - 10:00 PM</p>
+        </section>
+        <section id="order">
+            <h2>Order Form</h2>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="order">Your Order:</label>
+                <textarea id="order" name="order" required></textarea>
+                <button type="submit">Submit Order</button>
+            </form>
         </section>
     </main>
-    <a href="https://wa.me/1234567890" class="whatsapp-btn"><i class="fab fa-whatsapp"></i></a>
     <footer>
-        <p>&copy; 2026 Yardina404. All Rights Reserved.</p>
+        <p>Follow us on Social Media</p>
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">Twitter</a>
+        <a href="https://wa.me/your_whatsapp_number" class="whatsapp-button">WhatsApp</a>
     </footer>
 </body>
 </html>
+
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #333;
+}
+header {
+    background-color: #ffcccb;
+    padding: 20px;
+    text-align: center;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+.menu-item, .gallery-item {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+.footer {
+    text-align: center;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+}
+.whatsapp-button {
+    background-color: #25D366;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+}
