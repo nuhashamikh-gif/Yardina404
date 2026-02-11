@@ -1,125 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant Name</title>
-   
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Yardina Cleaning — Professional Cleaning Services</title>
+  <meta name="description" content="Yardina Cleaning — office & house cleaning in Greater Toronto. Eco-friendly, insured, reliable." />
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --brand-blue:#0f3b66;
+      --brand-yellow:#ffc107;
+      --accent:#1463d1;
+      --muted:#f4f6fb;
+      --card:#ffffff;
+      --glass: rgba(255,255,255,0.06);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Roboto,system-ui,-apple-system,"Segoe UI",Arial;line-height:1.5;color:#21313b;background:#fff}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;height:auto;display:block}
+
+    /* STICKY NAV / HEADER */
+    .topbar {
+      position:sticky; top:0; z-index:60;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(15,59,102,0.96), rgba(15,59,102,0.92));
+      box-shadow: 0 6px 18px rgba(11,39,71,0.18);
+      transition:padding 0.28s ease, background 0.3s ease;
+      padding:16px 20px;
+      display:flex; align-items:center; gap:16px; justify-content:space-between;
+    }
+    .topbar.shrink { padding:8px 16px; background: rgba(15,59,102,0.98); }
+
+    .brand { display:flex; align-items:center; gap:14px; }
+    .logo-horizontal { display:flex; align-items:center; gap:12px; }
+    .logo-compact { display:none; align-items:center; gap:10px; }
+
+    .nav-actions { display:flex; gap:12px; align-items:center; }
+    .btn { background:var(--brand-yellow); color:#102030; padding:10px 16px; border-radius:8px; font-weight:700; border:none; cursor:pointer }
+    .btn.secondary { background:transparent; color:#fff; border:1px solid rgba(255,255,255,0.12); padding:8px 12px }
+    .phone { background:transparent; color:#fff; border:1px solid rgba(255,255,255,0.12); padding:8px 12px; border-radius:8px }
+
+    /* HERO */
+    header.hero {
+      background: linear-gradient(180deg, rgba(8,24,44,0.85), rgba(8,24,44,0.6)), url('https://images.unsplash.com/photo-1581091215360-f6dbf920b616?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+      color:white; padding:120px 20px 90px; text-align:center; position:relative; overflow:hidden;
+    }
+    .hero-inner { max-width:1100px; margin:0 auto; }
+    /* floating company name (smooth + glow) */
+    .company-name {
+      font-size:64px; font-weight:900; letter-spacing:6px;
+      margin-bottom:12px; text-transform:uppercase;
+      animation:floatY 7s ease-in-out infinite;
+      text-shadow: 0 6px 28px rgba(15,59,102,0.35), 0 2px 6px rgba(0,0,0,0.25);
+      display:inline-block;
+      background: linear-gradient(90deg,#ffffff 0%, #dbeaff 60%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .company-sub { font-size:20px; opacity:0.95; margin-bottom:22px }
+    .hero-cta { display:flex; gap:12px; justify-content:center; align-items:center; margin-top:18px }
+
+    @keyframes floatY{
+      0%{ transform:translateY(0) }
+      50%{ transform:translateY(-6px) }
+      100%{ transform:translateY(0) }
+    }
+
+    /* GLOW effect */
+    .company-name.glow {
+      text-shadow: 0 0 20px rgba(81,144,255,0.28), 0 6px 28px rgba(15,59,102,0.25);
+      transition: text-shadow 0.3s ease;
+    }
+
+    /* LAYOUT SECTIONS */
+    main{padding:40px 20px 80px; max-width:1200px; margin:0 auto}
+    h2{color:var(--brand-blue); text-align:center; margin-bottom:18px}
+    p.lead{max-width:880px;margin:0 auto 22px; text-align:center; color:#234; font-size:1.05rem}
+
+    /* SERVICES GRID */
+    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:18px}
+    .card{background:var(--card); border-radius:12px; padding:18px; box-shadow:0 6px 18px rgba(16,32,48,0.06); text-align:center}
+    .card i{font-size:34px; color:var(--accent); margin-bottom:8px}
+
+    /* Responsive */
+    @media (max-width:980px){ .grid{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:640px){ .grid{grid-template-columns:1fr} .company-name{font-size:34px} .hero{padding:70px 20px} }
+
+    /* TESTIMONIALS slider */
+    .testimonial-wrap { margin:42px auto; max-width:960px; position:relative; overflow:hidden }
+    .testimonial-track { display:flex; transition: transform 0.5s ease; }
+    .testimonial { min-width:100%; padding:28px; box-sizing:border-box; background:var(--muted); border-radius:12px; text-align:center }
+    .testimonial p{ font-style:italic; margin-bottom:12px }
+    .dots{display:flex; gap:8px; justify-content:center; margin-top:12px}
+    .dot{width:10px;height:10px;border-radius:50%;background:#d0d7e6;cursor:pointer}
+    .dot.active{background:var(--accent)}
+
+    /* FORM */
+    .form-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:12px}
+    .form-control{padding:12px;border-radius:8px;border:1px solid #d7dfe8; font-size:15px}
+    textarea.form-control{min-height:120px; grid-column:1/-1}
+    .form-wrap{background:linear-gradient(180deg,#ffffff,#fbfdff); padding:22px; border-radius:12px; box-shadow:0 8px 24px rgba(16,32,48,0.06)}
+    .form-actions{display:flex; gap:12px; align-items:center; justify-content:flex-start; margin-top:8px}
+
+    /* FLOATING ACTIONS (WhatsApp, Call, Booking) */
+    .fab-group{position:fixed; right:18px; bottom:18px; display:flex; flex-direction:column; gap:10px; z-index:90}
+    .fab{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(16,32,48,0.18);cursor:pointer}
+    .fab.whatsapp{background:#25D366;color:#fff}
+    .fab.call{background:#1463d1;color:#fff}
+    .fab.book{background:var(--brand-yellow); color:#102030}
+
+    /* sticky header compact logo */
+    .compact-logo { display:none; width:44px; height:44px }
+
+    /* small helpers */
+    .muted { color:#6b7b88; font-size:0.95rem }
+
+    footer{padding:36px 20px; text-align:center; color:#425; background:#f7fafc; margin-top:60px}
+
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to Our Restaurant</h1>
-        <nav>
-            <ul>
-                <li><a href="#menu">Menu</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#location">Location</a></li>
-                <li><a href="#order">Order Now</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section id="menu">
-            <h2>Our Menu</h2>
-            <div class="menu-item">
-                <img src="path/to/image1.jpg" alt="Menu Item 1">
-                <h3>Menu Item 1</h3>
-                <p>Description of Menu Item 1.</p>
-                <span>Price: $XX.XX</span>
-            </div>
-            <div class="menu-item">
-                <img src="path/to/image2.jpg" alt="Menu Item 2">
-                <h3>Menu Item 2</h3>
-                <p>Description of Menu Item 2.</p>
-                <span>Price: $XX.XX</span>
-            </div>
-            <!-- Repeat for additional menu items -->
-        </section>
-        <section id="gallery">
-            <h2>Gallery</h2>
-            <div class="gallery-item">
-                <img src="path/to/gallery-image1.jpg" alt="Gallery Image 1">
-            </div>
-            <div class="gallery-item">
-                <img src="path/to/gallery-image2.jpg" alt="Gallery Image 2">
-            </div>
-            <!-- Repeat for additional gallery images -->
-        </section>
-        <section id="testimonials">
-            <h2>Customer Testimonials</h2>
-            <blockquote>
-                <p>Great food and service!</p>
-                <cite>- Happy Customer</cite>
-            </blockquote>
-            <blockquote>
-                <p>Delicious food and cozy atmosphere!</p>
-                <cite>- Another Happy Customer</cite>
-            </blockquote>
-            <!-- Repeat for additional testimonials -->
-        </section>
-        <section id="location">
-            <h2>Location & Hours</h2>
-            <p>123 Restaurant St., Food City, FC 12345</p>
-            <p>Hours: Mon-Sun 10:00 AM - 10:00 PM</p>
-        </section>
-        <section id="order">
-            <h2>Order Form</h2>
-            <form>
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <label for="order">Your Order:</label>
-                <textarea id="order" name="order" required></textarea>
-                <button type="submit">Submit Order</button>
-            </form>
-        </section>
-    </main>
-    <footer>
-        <p>Follow us on Social Media</p>
-        <a href="#">Facebook</a>
-        <a href="#">Instagram</a>
-        <a href="#">Twitter</a>
-        <a href="https://wa.me/your_whatsapp_number" class="whatsapp-button">WhatsApp</a>
-    </footer>
+
+  <!-- Topbar / Sticky header -->
+  <div class="topbar" id="topbar">
+    <div class="brand">
+      <!-- LOGO HORIZONTAL (inline SVG) -->
+      <div class="logo-horizontal" id="logoHorizontal" aria-hidden="true">
+        <!-- horizontal svg: icon + text -->
+        <svg width="180" height="46" viewBox="0 0 420 98" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Yardina Cleaning logo">
+          <!-- circular leaf icon -->
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#4ea6ff"/><stop offset="1" stop-color="#1463d1"/></linearGradient>
+          </defs>
+          <rect width="98" height="98" rx="20" fill="url(#g1)"/>
+          <path d="M52 34c-2 5-6 10-10 13-1 0-1 1-1 2 0 4 3 7 7 7 4 0 7-3 7-7 0-2 0-3-1-5 3-3 6-7 8-11 1-3 0-5-2-6-3-1-6 0-9 1-3 1-5 3-6 6z" fill="#fff" transform="translate(6 6) scale(1.2)"/>
+          <!-- text -->
+          <g transform="translate(116,24)">
+            <text x="0" y="20" font-family="Roboto, Arial, sans-serif" font-weight="900" font-size="34" fill="#ffffff">YARDINA</text>
+            <text x="0" y="52" font-family="Roboto, Arial, sans-serif" font-weight="700" font-size="20" fill="#dbe9ff">CLEANING</text>
+          </g>
+        </svg>
+      </div>
+
+      <!-- compact svg for sticky small header (hidden initially) -->
+      <div class="logo-compact" id="logoCompact" aria-hidden="true">
+        <svg class="compact-logo" viewBox="0 0 98 98" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g2" x1="0" x2="1"><stop offset="0" stop-color="#4ea6ff"/><stop offset="1" stop-color="#1463d1"/></linearGradient>
+          </defs>
+          <rect width="98" height="98" rx="18" fill="url(#g2)"/>
+          <path d="M52 34c-2 5-6 10-10 13-1 0-1 1-1 2 0 4 3 7 7 7 4 0 7-3 7-7 0-2 0-3-1-5 3-3 6-7 8-11 1-3 0-5-2-6-3-1-6 0-9 1-3 1-5 3-6 6z" fill="#fff" transform="translate(6 6) scale(1.2)"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- actions -->
+    <div class="nav-actions">
+      <a href="tel:+14168171625" class="phone" aria-label="Call Yardina Cleaning">📞 (416) 817-1625</a>
+      <a class="btn secondary" href="#contact">Get a Quote</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+        <div class="company-name glow" id="companyName">YARDINA CLEANING</div>
+        <div class="company-sub">Reliable, eco-friendly cleaning for homes & offices</div>
+        <div class="hero-cta">
+          <a href="#contact" class="btn">Get a Free Quote</a>
+          <a href="#reviews" class="btn secondary">See Reviews</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>Why Choose Yardina Cleaning?</h2>
+      <p class="lead">We deliver professional, insured cleaning with eco products, customized schedules, and a satisfaction guarantee. Serving Greater Toronto, York Region and Simcoe.</p>
+
+      <div class="grid" aria-hidden="false">
+        <div class="card"><i class="fas fa-broom"></i><h3>General Cleaning</h3><p class="muted">Routine, thorough cleaning for offices & homes</p></div>
+        <div class="card"><i class="fas fa-th-large"></i><h3>Floor & Carpet Care</h3><p class="muted">Deep carpet extraction, buffing, stain removal</p></div>
+        <div class="card"><i class="fas fa-window-maximize"></i><h3>Windows & Glass</h3><p class="muted">Streak-free interior and accessible exterior cleaning</p></div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS (slider) -->
+    <section id="reviews" aria-label="Customer reviews">
+      <h2>Customer Reviews</h2>
+      <div class="testimonial-wrap">
+        <div class="testimonial-track" id="testimonialTrack">
+          <div class="testimonial">
+            <p>"Yardina cleaned our office top-to-bottom — professional & reliable."</p>
+            <strong>— Sarah M., Toronto</strong>
+          </div>
+          <div class="testimonial">
+            <p>"Excellent communication and great results. Highly recommend."</p>
+            <strong>— Thomas R., Newmarket</strong>
+          </div>
+          <div class="testimonial">
+            <p>"Affordable, punctual and detailed. The team was wonderful."</p>
+            <strong>— Emily W., Vaughan</strong>
+          </div>
+        </div>
+      </div>
+      <div class="dots" id="dots"></div>
+    </section>
+
+    <!-- CONTACT / FORM -->
+    <section id="contact" aria-label="Contact form">
+      <h2>Get a Free Estimate</h2>
+      <div class="form-wrap" style="max-width:940px;margin:16px auto">
+        <form action="https://formspree.io/f/mrbjzwpg" method="POST" id="leadForm">
+          <div class="form-grid">
+            <input class="form-control" name="name" placeholder="Your name" required>
+            <input class="form-control" name="company" placeholder="Company name (optional)">
+            <input class="form-control" name="email" type="email" placeholder="Email address" required>
+            <input class="form-control" name="phone" type="tel" placeholder="Phone" required>
+            <input class="form-control" name="property_name" placeholder="Property name (optional)">
+            <input class="form-control" name="service_type" placeholder="Service type (Office / House / Other)">
+            <input class="form-control" name="size" placeholder="Size (sq ft)">
+            <input class="form-control" name="frequency" placeholder="Frequency (Daily / Weekly / Monthly)">
+            <textarea class="form-control" name="message" placeholder="Additional details"></textarea>
+          </div>
+
+          <!-- hidden redirect to thank you page (edit URL) -->
+          <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
+
+          <div class="form-actions">
+            <button class="btn" type="submit">Send Request</button>
+            <a class="btn secondary" href="https://calendly.com/" target="_blank" rel="noopener" aria-label="Book online">Book Online</a>
+            <span style="color:#4b5966;margin-left:12px" class="muted">We'll reply within 24 hours</span>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Yardina Cleaning. All rights reserved.</p>
+    <p class="muted">Email: <a href="mailto:Yardina.Cleaning@outlook.com">Yardina.Cleaning@outlook.com</a> • Phone: <a href="tel:+14168171625">(416) 817-1625</a></p>
+  </footer>
+
+  <!-- FLOATING ACTION BUTTONS -->
+  <div class="fab-group" role="navigation" aria-label="Quick contact">
+    <a class="fab whatsapp" href="https://wa.me/14168171625?text=Hello%20Yardina!%20I%20need%20a%20quote" target="_blank" aria-label="Chat on WhatsApp" title="WhatsApp">
+      <!-- whatsapp icon (svg) -->
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.52 3.48A11.98 11.98 0 0012.01.5 11.96 11.96 0 003.5 12.03c0 2.12.56 4.17 1.62 5.98L3 21l2.99-1.01A11.95 11.95 0 0012.01 24c6.62 0 11.99-5.37 11.99-11.99 0-3.2-1.25-6.2-3.48-8.53z" fill="#fff"/></svg>
+    </a>
+
+    <a class="fab call" href="tel:+14168171625" aria-label="Call Yardina Cleaning" title="Call">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.86 19.86 0 01-8.63-3.07A19.5 19.5 0 014.15 8.82 19.86 19.86 0 011.08 0 2 2 0 013 0h3a2 2 0 012 1.72c.12.98.36 1.94.72 2.86a2 2 0 01-.45 2.11l-1.27 1.27a16 16 0 007.77 7.77l1.27-1.27a2 2 0 012.11-.45c.92.36 1.88.6 2.86.72A2 2 0 0122 16.92z" fill="#fff"/></svg>
+    </a>
+
+    <a class="fab book" href="https://calendly.com/" target="_blank" aria-label="Book an appointment" title="Book">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 10h5v5H7zM19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 00-2 2v12a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2z" fill="#102030"/></svg>
+    </a>
+  </div>
+
+  <!-- SCRIPTS: slider, sticky logo, smoother animation toggles -->
+  <script>
+    // TESTIMONIAL SLIDER with dots
+    (function(){
+      const track = document.getElementById('testimonialTrack');
+      const slides = track.children;
+      const dotsWrap = document.getElementById('dots');
+      let idx = 0;
+      const total = slides.length;
+
+      function go(i){
+        idx = (i + total) % total;
+        track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+        // update dots
+        [...dotsWrap.children].forEach((d,di)=>d.classList.toggle('active', di===idx));
+      }
+
+      // create dots
+      for(let i=0;i<total;i++){
+        const d = document.createElement('div');
+        d.className='dot' + (i===0? ' active':'');
+        d.addEventListener('click', ()=>go(i));
+        dotsWrap.appendChild(d);
+      }
+
+      // auto rotate
+      let timer = setInterval(()=>go(idx+1), 4500);
+
+      // pause on hover
+      track.parentElement.addEventListener('mouseenter', ()=>clearInterval(timer));
+      track.parentElement.addEventListener('mouseleave', ()=> timer=setInterval(()=>go(idx+1),4500));
+    })();
+
+    // STICKY header behavior: show compact logo when scrolled
+    (function(){
+      const topbar = document.getElementById('topbar');
+      const logoH = document.getElementById('logoHorizontal');
+      const logoC = document.getElementById('logoCompact');
+      const companyName = document.getElementById('companyName');
+
+      function onScroll(){
+        if(window.scrollY > 60){
+          topbar.classList.add('shrink');
+          logoH.style.display = 'none';
+          logoC.style.display = 'flex';
+        } else {
+          topbar.classList.remove('shrink');
+          logoH.style.display = 'flex';
+          logoC.style.display = 'none';
+        }
+
+        // subtle glow when near top
+        if(window.scrollY < 20) companyName.classList.add('glow');
+        else companyName.classList.remove('glow');
+      }
+      window.addEventListener('scroll', onScroll);
+      onScroll();
+    })();
+
+    // SMOOTH SCROLL for anchor links
+    (function(){
+      document.querySelectorAll('a[href^="#"]').forEach(a=>{
+        a.addEventListener('click', function(e){
+          const target = document.querySelector(this.getAttribute('href'));
+          if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth', block:'start'}); }
+        });
+      });
+    })();
+
+    // OPTIONAL: intercept form submission to show a small inline confirmation without leaving page
+    (function(){
+      const form = document.getElementById('leadForm');
+      form.addEventListener('submit', function(e){
+        // allow normal submission to Formspree - but show a quick inline feedback and disable button
+        const btn = form.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+        // The form will POST to Formspree and redirect to _next if set.
+        // If you prefer AJAX submission, we can implement fetch() instead.
+      });
+    })();
+  </script>
+
+  <!-- Font Awesome (icons) -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
-
-/* styles.css */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-    color: #333;
-}
-header {
-    background-color: #ffcccb;
-    padding: 20px;
-    text-align: center;
-}
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-.menu-item, .gallery-item {
-    margin: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-}
-.footer {
-    text-align: center;
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
-}
-.whatsapp-button {
-    background-color: #25D366;
-    color: white;
-    padding: 10px;
-    text-decoration: none;
-}
