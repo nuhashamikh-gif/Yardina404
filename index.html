@@ -3,45 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yardina404</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>YARDINA Restaurant</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-        header { background-color: #4CAF50; color: white; padding: 15px; text-align: center; }
-        footer { background-color: #333; color: white; text-align: center; padding: 10px; position: relative; bottom: 0; width: 100%; }
-        .testimonials { margin: 20px; padding: 20px; border: 1px solid #ddd; border-radius: 5px; }
-        .social-links { margin: 20px; }
-        .social-links a { margin: 0 10px; }
-        .map { width: 100%; height: 400px; }
-        .whatsapp-btn { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; padding: 10px; border-radius: 50%; }
+        /* Add necessary styles here */
+        body { font-family: Arial, sans-serif; padding: 0; margin: 0; background-color: #f8f8f8; }
+        header { background-color: #333; color: white; padding: 1rem 0; text-align: center; }
+        nav ul { list-style: none; padding: 0; }
+        nav ul li { display: inline; margin: 0 15px; }
+        nav ul li a { color: white; text-decoration: none; }
+        section { padding: 20px; }
+        .gallery { display: flex; justify-content: space-around; }
+        .gallery img { width: 30%; height: auto; }
     </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to Yardina404</h1>
-        <p>Your go-to place for modern solutions.</p>
+        <h1>YARDINA Restaurant</h1>
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#hours">Hours</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
-    <main>
-        <section class="testimonials">
-            <h2>Testimonials</h2>
-            <p>"Absolutely amazing service! Highly recommend!" - A satisfied customer</p>
-            <p>"Yardina404 transformed my project into something beautiful!" - Another happy client</p>
-        </section>
-        <section class="map">
-            <h2>Our Location</h2>
-            <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387190.2799104659!2d-74.25987468744345!3d40.69767006455699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a3173c9ea15%3A0x9797c43fbda8f2d5!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1618708030649!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
-        </section>
-        <section class="social-links">
-            <h2>Follow Us</h2>
-            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
-            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
-            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-        </section>
-    </main>
-    <a href="https://wa.me/1234567890" class="whatsapp-btn"><i class="fab fa-whatsapp"></i></a>
+
+    <section id="menu">
+        <h2>Menu</h2>
+        <ul>
+            <li>Appetizer 1: Description</li>
+            <li>Appetizer 2: Description</li>
+            <li>Main Course 1: Description</li>
+            <li>Main Course 2: Description</li>
+            <li>Dessert 1: Description</li>
+            <li>Dessert 2: Description</li>
+        </ul>
+    </section>
+
+    <section id="gallery">
+        <h2>Photo Gallery</h2>
+        <div class="gallery">
+            <img src="path/to/image1.jpg" alt="Dish 1">
+            <img src="path/to/image2.jpg" alt="Dish 2">
+            <img src="path/to/image3.jpg" alt="Dish 3">
+        </div>
+    </section>
+
+    <section id="hours">
+        <h2>Operating Hours</h2>
+        <p>Monday to Friday: 10:00 AM - 10:00 PM</p>
+        <p>Saturday: 11:00 AM - 11:00 PM</p>
+        <p>Sunday: 11:00 AM - 9:00 PM</p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: contact@yardina.com</p>
+        <p>Phone: (123) 456-7890</p>
+    </section>
+
     <footer>
-        <p>&copy; 2026 Yardina404. All Rights Reserved.</p>
+        <p>&copy; 2026 YARDINA Restaurant. All Rights Reserved.</p>
     </footer>
 </body>
 </html>
