@@ -3,123 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant Name</title>
+    <title>YARDINA Restaurant</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header>
-        <h1>Welcome to Our Restaurant</h1>
-        <nav>
-            <ul>
-                <li><a href="#menu">Menu</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#location">Location</a></li>
-                <li><a href="#order">Order Now</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <div class="hero-banner">
+            <h1>Welcome to YARDINA</h1>
+            <p>Experience the taste of modern cuisine</p>
+            <a href="#menu" class="btn">View Menu</a>
+        </div>
     </header>
-    <main>
-        <section id="menu">
-            <h2>Our Menu</h2>
+
+    <section id="menu">
+        <h2>Our Menu</h2>
+        <div class="menu-items">
             <div class="menu-item">
-                <img src="path/to/image1.jpg" alt="Menu Item 1">
-                <h3>Menu Item 1</h3>
-                <p>Description of Menu Item 1.</p>
-                <span>Price: $XX.XX</span>
+                <img src="img/dish1.jpg" alt="Dish 1">
+                <h3>Dish 1</h3>
+                <p>Description of Dish 1</p>
             </div>
             <div class="menu-item">
-                <img src="path/to/image2.jpg" alt="Menu Item 2">
-                <h3>Menu Item 2</h3>
-                <p>Description of Menu Item 2.</p>
-                <span>Price: $XX.XX</span>
+                <img src="img/dish2.jpg" alt="Dish 2">
+                <h3>Dish 2</h3>
+                <p>Description of Dish 2</p>
             </div>
-            <!-- Repeat for additional menu items -->
-        </section>
-        <section id="gallery">
-            <h2>Gallery</h2>
-            <div class="gallery-item">
-                <img src="path/to/gallery-image1.jpg" alt="Gallery Image 1">
+            <div class="menu-item">
+                <img src="img/dish3.jpg" alt="Dish 3">
+                <h3>Dish 3</h3>
+                <p>Description of Dish 3</p>
             </div>
-            <div class="gallery-item">
-                <img src="path/to/gallery-image2.jpg" alt="Gallery Image 2">
-            </div>
-            <!-- Repeat for additional gallery images -->
-        </section>
-        <section id="testimonials">
-            <h2>Customer Testimonials</h2>
-            <blockquote>
-                <p>Great food and service!</p>
-                <cite>- Happy Customer</cite>
-            </blockquote>
-            <blockquote>
-                <p>Delicious food and cozy atmosphere!</p>
-                <cite>- Another Happy Customer</cite>
-            </blockquote>
-            <!-- Repeat for additional testimonials -->
-        </section>
-        <section id="location">
-            <h2>Location & Hours</h2>
-            <p>123 Restaurant St., Food City, FC 12345</p>
-            <p>Hours: Mon-Sun 10:00 AM - 10:00 PM</p>
-        </section>
-        <section id="order">
-            <h2>Order Form</h2>
-            <form>
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <label for="order">Your Order:</label>
-                <textarea id="order" name="order" required></textarea>
-                <button type="submit">Submit Order</button>
-            </form>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <div class="gallery-items">
+            <img src="img/gallery1.jpg" alt="Gallery 1">
+            <img src="img/gallery2.jpg" alt="Gallery 2">
+            <img src="img/gallery3.jpg" alt="Gallery 3">
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <h2>Testimonials</h2>
+        <blockquote>
+            <p>"Best restaurant experience ever!" - Customer 1</p>
+        </blockquote>
+        <blockquote>
+            <p>"The food is delicious and the service is exceptional!" - Customer 2</p>
+        </blockquote>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+        <div class="social-media">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+            <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a>
+        </div>
+    </section>
+
     <footer>
-        <p>Follow us on Social Media</p>
-        <a href="#">Facebook</a>
-        <a href="#">Instagram</a>
-        <a href="#">Twitter</a>
-        <a href="https://wa.me/your_whatsapp_number" class="whatsapp-button">WhatsApp</a>
+        <p>&copy; 2026 YARDINA. All Rights Reserved.</p>
     </footer>
 </body>
 </html>
-
-/* styles.css */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-    color: #333;
-}
-header {
-    background-color: #ffcccb;
-    padding: 20px;
-    text-align: center;
-}
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-.menu-item, .gallery-item {
-    margin: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-}
-.footer {
-    text-align: center;
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
-}
-.whatsapp-button {
-    background-color: #25D366;
-    color: white;
-    padding: 10px;
-    text-decoration: none;
-}
