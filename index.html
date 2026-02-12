@@ -1,394 +1,224 @@
-
-
-          <!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>YARDINA — Delicious Vegetarian Delights</title>
-  <meta name="description" content="YARDINA serves mouth-watering vegetarian Middle Eastern food in Thornhill. Try falafel, wraps, hummus plates, and more — fresh, flavorful, and wholesome.">
-  <style>
-    :root {
-      --accent: #1a73e8;
-      --dark: #0f172a;
-      --muted: #64748b;
-      --bg: #f9fcfc;
-      --card: #ffffff;
-      --radius: 14px;
-      --transition: 0.25s ease;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial;
-      line-height: 1.5;
-      color: var(--dark);
-      background: linear-gradient(180deg, #fbfdff, var(--bg));
-      margin: 0;
-    }
-    a { text-decoration: none; color: inherit; }
-    h1, h2, h3, h4 { margin: 0; }
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 28px;
-    }
-    /* Header */
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 0;
-    }
-    .brand {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-    .logo {
-      width: 60px;
-      height: 60px;
-      border-radius: var(--radius);
-      background: linear-gradient(135deg, #1a73e8, #0b4bb3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: 700;
-      font-size: 22px;
-    }
-    h1 { font-size: 28px; }
-    p.lead { color: var(--muted); font-size: 15px; }
-    nav a {
-      margin-left: 16px;
-      font-weight: 600;
-      color: var(--muted);
-      transition: var(--transition);
-    }
-    nav a:hover { color: var(--accent); }
-    nav a.cta-btn {
-      background: var(--accent);
-      color: white;
-      padding: 10px 18px;
-      border-radius: 999px;
-    }
-    /* Hero */
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 28px;
-      align-items: start;
-      margin-top: 20px;
-    }
-    .card {
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 22px;
-      box-shadow: 0 6px 18px rgba(16,24,40,0.08);
-    }
-    .card h3, .section-title { color: var(--dark); }
-    .cta-btn {
-      display: inline-block;
-      background: var(--accent);
-      color: white;
-      padding: 12px 18px;
-      border-radius: 10px;
-      font-weight: 700;
-      margin-top: 12px;
-      transition: var(--transition);
-    }
-    .cta-btn:hover { background: #0b4bb3; }
-    .hero-image {
-      margin-top: 16px;
-      border-radius: var(--radius);
-      overflow: hidden;
-    }
-    .hero-image img {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-      display: block;
-    }
-    /* Sections */
-    .section-title {
-      font-size: 24px;
-      margin: 36px 0 12px;
-      border-left: 4px solid var(--accent);
-      padding-left: 10px;
-    }
-    .small { font-size: 14px; color: var(--muted); }
-    /* Menu */
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 16px;
-      margin-top: 16px;
-    }
-    .menu-item {
-      background: #fff;
-      padding: 14px;
-      border-radius: 10px;
-      border: 1px solid #e9f1f4;
-      transition: var(--transition);
-    }
-    .menu-item:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 5px 18px rgba(0,0,0,0.08);
-    }
-    .menu-item img {
-      width: 100%;
-      height: 140px;
-      border-radius: 8px;
-      object-fit: cover;
-      margin-top: 6px;
-    }
-    .price {
-      font-weight: 800;
-      color: var(--accent);
-      margin-top: 6px;
-    }
-    /* Gallery */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 10px;
-      margin-top: 14px;
-    }
-    .gallery-grid img {
-      width: 100%;
-      height: 120px;
-      border-radius: 10px;
-      object-fit: cover;
-      transition: var(--transition);
-    }
-    .gallery-grid img:hover { transform: scale(1.03); }
-    /* Why Choose Us */
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 18px;
-      margin-top: 14px;
-    }
-    .why-card {
-      background: #f7fbff;
-      border: 1px solid #dce9ff;
-      border-radius: 10px;
-      padding: 16px;
-      transition: var(--transition);
-    }
-    .why-card:hover { background: #eef5ff; }
-    /* Visit Us */
-    .visit-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 24px;
-      margin-top: 14px;
-    }
-    /* Footer */
-    footer {
-      margin-top: 40px;
-      padding: 20px 0;
-      color: var(--muted);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 13px;
-      border-top: 1px solid #e6eef0;
-    }
-    /* Sticky order button for mobile */
-    .sticky-order {
-      display: none;
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(15,23,42,0.96);
-      padding: 10px 16px;
-      z-index: 50;
-    }
-    .sticky-order a {
-      display: block;
-      text-align: center;
-      background: var(--accent);
-      color: white;
-      padding: 12px 18px;
-      border-radius: 999px;
-      font-weight: 700;
-    }
-    /* Responsive Design */
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 640px) {
-      header { flex-direction: column; align-items: flex-start; gap: 10px; }
-      .sticky-order { display: block; }
-      body { padding-bottom: 70px; }
-      .visit-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>YARDINA — Order Online</title>
+<meta name="description" content="Order fresh Middle Eastern vegetarian food from YARDINA. Add to cart and submit your order instantly.">
+
+<style>
+:root {
+  --accent: #166534;
+  --accent-light: #22c55e;
+  --dark: #0f172a;
+  --bg: #f8fafc;
+  --card: #fff;
+  --radius: 16px;
+  --transition: 0.3s ease;
+}
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  margin:0;
+  padding:0;
+}
+.header {
+  padding:20px;
+  background:var(--accent);
+  color:white;
+  text-align:center;
+}
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+  padding:20px;
+}
+.menu-card {
+  background:white;
+  padding:15px;
+  border-radius:var(--radius);
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+.menu-card h3{margin:0 0 8px;}
+.menu-card p{font-size:14px;color:#555;}
+.menu-card button {
+  margin-top:10px;
+  background:var(--accent);
+  color:white;
+  border:none;
+  padding:10px;
+  width:100%;
+  border-radius:var(--radius);
+  cursor:pointer;
+  font-size:15px;
+}
+.cart {
+  position:fixed;
+  right:20px;
+  top:80px;
+  width:300px;
+  background:white;
+  border-radius:var(--radius);
+  box-shadow:0 6px 20px rgba(0,0,0,0.15);
+  padding:15px;
+  max-height:80vh;
+  overflow:auto;
+  z-index:100;
+}
+.cart h3 {margin-top:0;}
+.cart-item {
+  display:flex;
+  justify-content:space-between;
+  margin:8px 0;
+}
+.cart-total {
+  font-weight:700;
+  margin-top:10px;
+  border-top:1px solid #eee;
+  padding-top:10px;
+}
+.checkout-btn {
+  background:var(--accent-light);
+  border:none;
+  width:100%;
+  padding:12px;
+  color:white;
+  border-radius:var(--radius);
+  cursor:pointer;
+  margin-top:10px;
+}
+.form-section {
+  margin-top:20px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+input,textarea,select {
+  padding:10px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  width:100%;
+}
+</style>
 </head>
 <body>
-  <div class="container">
-    <!-- HEADER -->
-    <header>
-      <div class="brand">
-        <div class="logo">Y</div>
-        <div>
-          <h1>YARDINA</h1>
-          <p class="lead">Delicious Vegetarian Delights — Authentic Middle Eastern flavors.</p>
-        </div>
-      </div>
-      <nav>
-        <a href="#menu">Menu</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#visit">Visit</a>
-        <a href="#order" class="cta-btn">Order Now</a>
-      </nav>
-    </header>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="card">
-        <h2>Falafel, wraps, plates & more — made fresh, flavorful, and vegetarian.</h2>
-        <p class="small">Middle Eastern comfort food, prepared with care — from crispy falafel to vibrant salads and dips.</p>
-        <div class="hero-image">
-          <img src="https://raw.githubusercontent.com/nuhashamikh-gif/Yardina404/main/images/storefront.jpg" alt="Yardina storefront">
-        </div>
-        <a href="#order" class="cta-btn">Order Now</a>
-      </div>
-      <!-- ORDER FORM -->
-      <aside class="card" id="order">
-        <h3>Place Your Food Order</h3>
-        <p class="small">We’ll confirm by phone or email. For same‑day orders, please call if no reply within 15 mins.</p>
-        <form action="mailto:yardina404@outlook.com" method="post" enctype="text/plain">
-          <label>Your Name</label>
-          <input name="Customer Name" placeholder="Full name" required>
-          <label>Phone Number</label>
-          <input name="Phone" type="tel" placeholder="416‑000‑0000" required>
-          <label>Select Item</label>
-          <select name="Menu Item" required>
-            <option value="">Choose an item</option>
-            <option>Falafel Sandwich — $9.00</option>
-            <option>Falafel Platter — $13.00</option>
-            <option>Shawarma Sandwich — $12.00</option>
-            <option>Shawarma Platter — $15.00</option>
-            <option>Sheesh Kabab Platter — $17.00</option>
-            <option>Kofta Platter — $18.00</option>
-            <option>Fries — $3.00</option>
-            <option>Samosa (2 pcs) — $4.50</option>
-            <option>Spring Roll — $3.00</option>
-            <option>Soup — $3.00</option>
-          </select>
-          <label>Quantity</label>
-          <input name="Quantity" type="number" min="1" value="1" required>
-          <label>Pickup or Delivery</label>
-          <select name="Order Type" required>
-            <option value="">Choose one</option>
-            <option>Pickup</option>
-            <option>Delivery (local)</option>
-          </select>
-          <label>Address (if delivery)</label>
-          <textarea name="Address" rows="2" placeholder="Unit / Street, City, Postal Code"></textarea>
-          <label>Notes / Special Instructions</label>
-          <textarea name="Notes" rows="3" placeholder="Extra tahini, no onions, spice level, etc."></textarea>
-          <button type="submit" class="cta-btn" style="border:none;cursor:pointer;">Submit Order</button>
-        </form>
-        <a href="#" class="cta-btn" style="background:#ccc;pointer-events:none;margin-top:12px;">Pay with Square (Coming Soon)</a>
-      </aside>
-    </section>
-    <!-- MENU -->
-    <section id="menu">
-      <h2 class="section-title">Our Menu</h2>
-      <div class="card">
-        <h3>Falafel & Wraps</h3>
-        <div class="menu-grid">
-          <div class="menu-item">
-            <h3>Falafel Sandwich</h3>
-            <p class="small">Crispy falafel, salad, and sauce wrapped in warm pita.</p>
-            <p class="price">$9.00</p>
-            <img src="https://raw.githubusercontent.com/nuhashamikh-gif/Yardina404/main/images/Flafel Sandwich.jpg" alt="Falafel Sandwich">
-          </div>
-          <div class="menu-item">
-            <h3>Shawarma Sandwich</h3>
-            <p class="small">Middle Eastern wrap with pickles and tahini sauce.</p>
-            <p class="price">$12.00</p>
-            <img src="https://raw.githubusercontent.com/nuhashamikh-gif/Yardina404/main/images/Shawarma Sandwitch.jpg" alt="Shawarma Sandwich">
-          </div>
-          <div class="menu-item">
-            <h3>Noodles Box</h3>
-            <p class="small">Stir‑fried noodles with mixed vegetables and spring roll.</p>
-            <p class="price">$10.99</p>
-            <img src="https://raw.githubusercontent.com/nuhashamikh-gif/Yardina404/main/images/Nodels.jpg" alt="Noodles Box">
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- GALLERY -->
-    <section id="gallery">
-      <h2 class="section-title">Gallery</h2>
-      <div class="card">
-        <div class="gallery-grid">
-          <img src="https://raw.githubusercontent.com/nuhashamikh-gif/Yardina404/main/images/Flafel platter.jpg" alt="Falafel platter">
-          <img src="https://raw.githubusercontent.com/nuhashamikh-gif/Yardina404/main/images/Shawarma platter.jpg" alt="Shawarma platter">
-          <img src="https://raw.githubusercontent.com/nuhashamikh-gif/Yardina404/main/images/kofta plater.png" alt="Kofta platter">
-          <img src="https://raw.githubusercontent.com/nuhashamikh-gif/Yardina404/main/images/Fries.jpg" alt="Fries">
-        </div>
-      </div>
-    </section>
-    <!-- WHY CHOOSE US -->
-    <section>
-      <h2 class="section-title">Why Choose YARDINA</h2>
-      <div class="card">
-        <div class="why-grid">
-          <div class="why-card">
-            <h4>Fresh & Vegetarian</h4>
-            <p class="small">Wholesome ingredients and authentic recipes made fresh daily.</p>
-          </div>
-          <div class="why-card">
-            <h4>Comfort Meets Flavor</h4>
-            <p class="small">Delicious Middle Eastern flavors that feel like home.</p>
-          </div>
-          <div class="why-card">
-            <h4>Local & Friendly</h4>
-            <p class="small">Proudly serving Thornhill with warm service and passion.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- VISIT US -->
-    <section id="visit">
-      <h2 class="section-title">Visit Us</h2>
-      <div class="card visit-grid">
-        <div>
-          <h3>Location</h3>
-          <p><strong>YARDINA — Delicious Vegetarian Delights</strong><br>
-            Unit 5 &amp; 6 — 2900 Steeles Avenue East<br>
-            Thornhill, Ontario
-          </p>
-          <p class="small">Easy to reach along Steeles Avenue East — perfect for dine‑in, takeout, or catering.</p>
-          <h3 style="margin-top:16px;">Hours</h3>
-          <p><strong>Fri–Sun:</strong> 10:00 am – 6:00 pm</p>
-          <p class="small">Closed Mon–Thu. Contact us for catering orders.</p>
-        </div>
-        <div>
-          <h3>Contact</h3>
-          <p><strong>Phone:</strong> <a href="tel:+14168171625">416‑817‑1625</a><br>
-             <strong>Email:</strong> <a href="mailto:yardina404@outlook.com">yardina404@outlook.com</a></p>
-          <p class="small">Please call ahead for large orders so we can prepare everything fresh!</p>
-        </div>
-      </div>
-    </section>
-    <!-- FOOTER -->
-    <footer>
-      <div>
-        <strong>YARDINA</strong><br>
-        <span>Unit 5 &amp; 6 — 2900 Steeles Avenue East, Thornhill, ON</span><br>
-        <span>Fri–Sun: 10:00 am – 6:00 pm</span>
-      </div>
-      <div>© 2024 YARDINA</div>
-    </footer>
+
+<div class="header">
+  <h1>YARDINA — Order Online</h1>
+  <p>Vegetarian Middle Eastern — Fresh & Flavorful</p>
+</div>
+
+<div class="menu-grid">
+  <!-- MENU ITEMS -->
+  <div class="menu-card">
+    <h3>Falafel Sandwich</h3>
+    <p>$9.00</p>
+    <button onclick="addToCart('Falafel Sandwich',9)">Add to Cart</button>
   </div>
-  <!-- Sticky mobile order button -->
-  <div class="sticky-order">
-    <a href="#order">Order Now from YARDINA</a>
+  <div class="menu-card">
+    <h3>Falafel Platter</h3>
+    <p>$13.00</p>
+    <button onclick="addToCart('Falafel Platter',13)">Add to Cart</button>
   </div>
+  <div class="menu-card">
+    <h3>Shawarma Sandwich</h3>
+    <p>$12.00</p>
+    <button onclick="addToCart('Shawarma Sandwich',12)">Add to Cart</button>
+  </div>
+  <div class="menu-card">
+    <h3>Shawarma Platter</h3>
+    <p>$15.00</p>
+    <button onclick="addToCart('Shawarma Platter',15)">Add to Cart</button>
+  </div>
+  <div class="menu-card">
+    <h3>Sheesh Kabab Platter</h3>
+    <p>$17.00</p>
+    <button onclick="addToCart('Sheesh Kabab Platter',17)">Add to Cart</button>
+  </div>
+  <div class="menu-card">
+    <h3>Kofta Platter</h3>
+    <p>$18.00</p>
+    <button onclick="addToCart('Kofta Platter',18)">Add to Cart</button>
+  </div>
+</div>
+
+<div class="cart" id="cart">
+  <h3>Your Cart</h3>
+  <div id="cart-items"></div>
+  <div class="cart-total">Total: $<span id="cart-total">0</span></div>
+
+  <div class="form-section">
+    <input type="text" id="name" placeholder="Full Name" required>
+    <input type="text" id="phone" placeholder="Phone" required>
+    <input type="text" id="address" placeholder="Address">
+    <select id="pickupDelivery">
+      <option value="Pickup">Pickup</option>
+      <option value="Delivery">Delivery</option>
+    </select>
+    <textarea id="orderNotes" placeholder="Special instructions"></textarea>
+    <button class="checkout-btn" onclick="submitOrder()">Place Order</button>
+  </div>
+</div>
+
+<script>
+let cart = [];
+
+function addToCart(name,price){
+  cart.push({name,price});
+  renderCart();
+}
+
+function renderCart(){
+  let html = '';
+  let total=0;
+  cart.forEach((item,i)=>{
+    total += item.price;
+    html += `
+      <div class="cart-item">
+        <span>${item.name}</span>
+        <span>$${item.price}</span>
+      </div>`;
+  });
+  document.getElementById('cart-items').innerHTML=html;
+  document.getElementById('cart-total').innerText = total.toFixed(2);
+}
+
+function submitOrder(){
+  if(cart.length === 0){
+    alert('Add items first.');
+    return;
+  }
+  const name = document.getElementById('name').value;
+  const phone= document.getElementById('phone').value;
+  const address = document.getElementById('address').value;
+  const pd = document.getElementById('pickupDelivery').value;
+  const total = document.getElementById('cart-total').innerText;
+  let details = cart.map(i => `${i.name} ($${i.price})`).join(', ');
+
+  const url = new URL('https://docs.google.com/forms/d/e/1FAIpQLSfRkqdkk7MAyrNU5C5DQuN-kEBFcbaWW4Wf4GbUrEG8b4YopA/formResponse');
+
+  const data = {
+    "entry.1821014287": name,
+    "entry.909098353": phone,
+    "entry.569530051": address,
+    "entry.659513039": details,
+    "entry.638917340": total,
+    "entry.1485972649": pd
+  };
+
+  Object.keys(data).forEach(key => url.searchParams.append(key, data[key]));
+
+  fetch(url, {
+    method:'POST',
+    mode:'no-cors'
+  }).then(()=>{
+    alert('Order submitted! Thank you!');
+    location.reload();
+  });
+}
+</script>
+
 </body>
 </html>
