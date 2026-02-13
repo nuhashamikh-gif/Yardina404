@@ -1,228 +1,47 @@
-
-   <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pre-Order Menu</title>
-
+<title>YARDINA Online Orders</title>
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        background: #f4f6f9;
-    }
-
-    header {
-        background: #222;
-        color: white;
-        padding: 20px;
-        text-align: center;
-    }
-
-    .container {
-        display: flex;
-        flex-wrap: wrap;
-        padding: 20px;
-        gap: 20px;
-        justify-content: center;
-    }
-
-    table {
-        width: 100%;
-        max-width: 500px;
-        border-collapse: collapse;
-        background: white;
-        border-radius: 8px;
-        overflow: hidden;
-    }
-
-    th, td {
-        padding: 12px;
-        border-bottom: 1px solid #ddd;
-    }
-
-    th {
-        background: #f1f1f1;
-    }
-
-    .qty-btn {
-        padding: 6px 10px;
-        background: #333;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-    .summary {
-        background: white;
-        padding: 20px;
-        border-radius: 8px;
-        width: 100%;
-        max-width: 350px;
-    }
-
-    .summary h3 {
-        margin-top: 0;
-    }
-
-    input {
-        width: 100%;
-        padding: 8px;
-        margin-bottom: 12px;
-        border-radius: 4px;
-        border: 1px solid #ccc;
-    }
-
-    button {
-        padding: 12px;
-        width: 100%;
-        background: #28a745;
-        color: white;
-        border: none;
-        border-radius: 6px;
-        font-size: 16px;
-        cursor: pointer;
-    }
-
-    button:hover {
-        background: #218838;
-    }
-
-    @media (max-width: 768px) {
-        .container {
-            flex-direction: column;
-            align-items: center;
-        }
-    }
+body { font-family: Arial, sans-serif; background:#f4f6f9; margin:0; }
+header { background:#222; color:white; text-align:center; padding:20px; }
+.container { max-width:600px; margin:20px auto; padding:20px; background:white; border-radius:8px; }
+table { width:100%; border-collapse: collapse; margin-bottom:20px; }
+th, td { padding:12px; border-bottom:1px solid #ddd; text-align:left; }
+th { background:#f1f1f1; }
+a.button { display:inline-block; padding:12px 20px; background:#28a745; color:white; text-decoration:none; border-radius:6px; margin:5px 0; }
+a.button:hover { background:#218838; }
 </style>
 </head>
-
 <body>
 
 <header>
-    <h1>Pre-Order Your Meal</h1>
+<h1>YARDINA Online Orders</h1>
+<p>Click an item to pre-fill your order form</p>
 </header>
 
 <div class="container">
 
-    <!-- MENU -->
-    <table>
-        <tr><th>Item</th><th>Price</th><th>Qty</th></tr>
+<h2>Menu</h2>
+<table>
+<tr><th>Item</th><th>Price</th></tr>
+<tr><td>Classic Burger</td><td>$8.99</td></tr>
+<tr><td>Fries</td><td>$3.49</td></tr>
+<tr><td>Soda</td><td>$1.99</td></tr>
+</table>
 
-        <tr>
-            <td>Classic Burger</td>
-            <td>$8.99</td>
-            <td>
-                <button class="qty-btn" onclick="changeQty('burger', -1)">–</button>
-                <span id="burger">0</span>
-                <button class="qty-btn" onclick="changeQty('burger', 1)">+</button>
-            </td>
-        </tr>
+<h2>Place Your Order</h2>
+<p>Click below to go to the Google Form with your selected item pre-filled. You can edit your name, quantity, and pickup details in the form before submitting.</p>
 
-        <tr>
-            <td>Fries</td>
-            <td>$3.49</td>
-            <td>
-                <button class="qty-btn" onclick="changeQty('fries', -1)">–</button>
-                <span id="fries">0</span>
-                <button class="qty-btn" onclick="changeQty('fries', 1)">+</button>
-            </td>
-        </tr>
+<!-- Example links (adjust quantity/item as needed) -->
+<a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLSfRkqdkk7MAyrNU5C5DQuN-kEBFcbaWW4Wf4GbUrEG8b4YopA/viewform?usp=pp_url&entry.659513039=Classic+Burger&entry.1485972649=Pickup" target="_blank">Order Classic Burger</a>
+<a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLSfRkqdkk7MAyrNU5C5DQuN-kEBFcbaWW4Wf4GbUrEG8b4YopA/viewform?usp=pp_url&entry.659513039=Fries&entry.1485972649=Pickup" target="_blank">Order Fries</a>
+<a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLSfRkqdkk7MAyrNU5C5DQuN-kEBFcbaWW4Wf4GbUrEG8b4YopA/viewform?usp=pp_url&entry.659513039=Soda&entry.1485972649=Pickup" target="_blank">Order Soda</a>
 
-        <tr>
-            <td>Soda</td>
-            <td>$1.99</td>
-            <td>
-                <button class="qty-btn" onclick="changeQty('soda', -1)">–</button>
-                <span id="soda">0</span>
-                <button class="qty-btn" onclick="changeQty('soda', 1)">+</button>
-            </td>
-        </tr>
-    </table>
-
-    <!-- ORDER SUMMARY -->
-    <div class="summary">
-        <h3>Your Total</h3>
-        <p>Subtotal: $<span id="subtotal">0.00</span></p>
-        <p>Tax (13%): $<span id="tax">0.00</span></p>
-        <p><strong>Total: $<span id="total">0.00</span></strong></p>
-
-        <h3>Customer Info</h3>
-        <input type="text" id="customerName" placeholder="Your Name">
-        <input type="time" id="pickupTime">
-
-        <button id="placeOrder">Place Order</button>
-    </div>
+<p>After clicking, fill in your name, email, and pickup time in the form to complete your order.</p>
 
 </div>
-
-<script>
-    const prices = {
-        burger: 8.99,
-        fries: 3.49,
-        soda: 1.99
-    };
-
-    function changeQty(item, amount) {
-        let qtyElement = document.getElementById(item);
-        let qty = parseInt(qtyElement.innerText);
-        qty = Math.max(0, qty + amount);
-        qtyElement.innerText = qty;
-        updateTotal();
-    }
-
-    function updateTotal() {
-        let burgerQty = parseInt(document.getElementById("burger").innerText);
-        let friesQty = parseInt(document.getElementById("fries").innerText);
-        let sodaQty = parseInt(document.getElementById("soda").innerText);
-
-        let subtotal =
-            burgerQty * prices.burger +
-            friesQty * prices.fries +
-            sodaQty * prices.soda;
-
-        let tax = subtotal * 0.13;
-        let total = subtotal + tax;
-
-        document.getElementById("subtotal").innerText = subtotal.toFixed(2);
-        document.getElementById("tax").innerText = tax.toFixed(2);
-        document.getElementById("total").innerText = total.toFixed(2);
-    }
-
-    document.getElementById("placeOrder").addEventListener("click", function () {
-
-        let total = parseFloat(document.getElementById("total").innerText);
-        let name = document.getElementById("customerName").value.trim();
-        let time = document.getElementById("pickupTime").value;
-
-        if (total === 0) {
-            alert("Please add items to your order.");
-            return;
-        }
-
-        if (name === "" || time === "") {
-            alert("Please enter your name and pickup time.");
-            return;
-        }
-
-        alert(
-            "Thank you " + name +
-            "!\nYour order total is $" + total.toFixed(2) +
-            "\nPickup time: " + time
-        );
-
-        // Reset cart
-        document.getElementById("burger").innerText = 0;
-        document.getElementById("fries").innerText = 0;
-        document.getElementById("soda").innerText = 0;
-        document.getElementById("customerName").value = "";
-        document.getElementById("pickupTime").value = "";
-
-        updateTotal();
-    });
-</script>
-
 </body>
 </html>
