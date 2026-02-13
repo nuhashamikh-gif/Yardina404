@@ -1,120 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Yardina404 — Order Online</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-      background: #fdfdfd;
-    }
-    h1, h2 {
-      text-align: center;
-    }
-    .menu-item {
-      border: 1px solid #ddd;
-      padding: 16px;
-      margin: 12px auto;
-      max-width: 500px;
-      border-radius: 8px;
-    }
-    .menu-item button {
-      background: #28a745;
-      color: white;
-      border: none;
-      padding: 10px 14px;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-    #orderForm {
-      display: none;
-      max-width: 500px;
-      margin: 20px auto;
-      border: 1px solid #ddd;
-      padding: 20px;
-      border-radius: 8px;
-    }
-    #orderForm label, #orderForm input {
-      display: block;
-      width: 100%;
-      margin-bottom: 10px;
-    }
-    #orderForm button {
-      background: #0077cc;
-      color: white;
-      padding: 10px;
-      border: none;
-      cursor: pointer;
-      border-radius: 4px;
-    }
+    body { font-family: Arial; padding: 20px; background: #fdfdfd; }
+    h1,h2{text-align:center;}
+    .menu-item{border:1px solid #ddd; padding:16px; margin:12px auto; max-width:500px; border-radius:8px;}
+    .menu-item button{background:#28a745;color:white;border:none;padding:10px 14px;cursor:pointer;border-radius:4px;}
+    #cart{max-width:500px;margin:20px auto;border:1px solid #ddd;padding:20px;border-radius:8px;}
+    #cart table{width:100%;border-collapse:collapse;}
+    #cart table, #cart th, #cart td{border:1px solid #ccc;}
+    #cart th, #cart td{padding:8px;text-align:center;}
+    #cart button{background:#0077cc;color:white;padding:8px;border:none;border-radius:4px;cursor:pointer;}
   </style>
 </head>
 <body>
-  <h1>Welcome to Yardina404</h1>
-  <h2>Menu</h2>
 
-  <div class="menu-item"><h3>Falafel Platter Small — $12</h3><button onclick="selectItem('Falafel Platter Small',12)">Add to Order</button></div>
-  <div class="menu-item"><h3>Falafel Platter Large — $17</h3><button onclick="selectItem('Falafel Platter Large',17)">Add to Order</button></div>
-  <div class="menu-item"><h3>Shawarma Platter Small — $15</h3><button onclick="selectItem('Shawarma Platter Small',15)">Add to Order</button></div>
-  <div class="menu-item"><h3>Shawarma Platter Large — $20</h3><button onclick="selectItem('Shawarma Platter Large',20)">Add to Order</button></div>
-  <div class="menu-item"><h3>Kabab Platter Small — $15</h3><button onclick="selectItem('Kabab Platter Small',15)">Add to Order</button></div>
-  <div class="menu-item"><h3>Kabab Platter Large — $20</h3><button onclick="selectItem('Kabab Platter Large',20)">Add to Order</button></div>
-  <div class="menu-item"><h3>Falafel Sandwich — $8</h3><button onclick="selectItem('Falafel Sandwich',8)">Add to Order</button></div>
-  <div class="menu-item"><h3>Shawarma Sandwich — $12</h3><button onclick="selectItem('Shawarma Sandwich',12)">Add to Order</button></div>
-  <div class="menu-item"><h3>Pizza Cheese — $7</h3><button onclick="selectItem('Pizza Cheese',7)">Add to Order</button></div>
-  <div class="menu-item"><h3>Zaatar — $8</h3><button onclick="selectItem('Zaatar',8)">Add to Order</button></div>
-  <div class="menu-item"><h3>Zaatar and Cheese — $10</h3><button onclick="selectItem('Zaatar and Cheese',10)">Add to Order</button></div>
-  <div class="menu-item"><h3>Fries Small — $3</h3><button onclick="selectItem('Fries Small',3)">Add to Order</button></div>
-  <div class="menu-item"><h3>Fries Large — $5</h3><button onclick="selectItem('Fries Large',5)">Add to Order</button></div>
+<h1>Welcome to Yardina404</h1>
+<h2>Menu</h2>
 
-  <!-- Order Form -->
-  <form id="orderForm" onsubmit="return goToPayment()">
-    <h2>Your Order</h2>
-    <p id="selectedItemText"></p>
+<!-- Menu Items -->
+<div class="menu-item"><h3>Falafel Platter Small — $12</h3><button onclick="addToCart('Falafel Platter Small',12)">Add to Cart</button></div>
+<div class="menu-item"><h3>Falafel Platter Large — $17</h3><button onclick="addToCart('Falafel Platter Large',17)">Add to Cart</button></div>
+<div class="menu-item"><h3>Shawarma Platter Small — $15</h3><button onclick="addToCart('Shawarma Platter Small',15)">Add to Cart</button></div>
+<div class="menu-item"><h3>Shawarma Platter Large — $20</h3><button onclick="addToCart('Shawarma Platter Large',20)">Add to Cart</button></div>
+<div class="menu-item"><h3>Kabab Platter Small — $15</h3><button onclick="addToCart('Kabab Platter Small',15)">Add to Cart</button></div>
+<div class="menu-item"><h3>Kabab Platter Large — $20</h3><button onclick="addToCart('Kabab Platter Large',20)">Add to Cart</button></div>
+<div class="menu-item"><h3>Falafel Sandwich — $8</h3><button onclick="addToCart('Falafel Sandwich',8)">Add to Cart</button></div>
+<div class="menu-item"><h3>Shawarma Sandwich — $12</h3><button onclick="addToCart('Shawarma Sandwich',12)">Add to Cart</button></div>
+<div class="menu-item"><h3>Pizza Cheese — $7</h3><button onclick="addToCart('Pizza Cheese',7)">Add to Cart</button></div>
+<div class="menu-item"><h3>Zaatar — $8</h3><button onclick="addToCart('Zaatar',8)">Add to Cart</button></div>
+<div class="menu-item"><h3>Zaatar and Cheese — $10</h3><button onclick="addToCart('Zaatar and Cheese',10)">Add to Cart</button></div>
+<div class="menu-item"><h3>Fries Small — $3</h3><button onclick="addToCart('Fries Small',3)">Add to Cart</button></div>
+<div class="menu-item"><h3>Fries Large — $5</h3><button onclick="addToCart('Fries Large',5)">Add to Cart</button></div>
 
-    <label>
-      Quantity:
-      <input type="number" id="quantity" value="1" min="1" required>
-    </label>
+<!-- Cart -->
+<div id="cart" style="display:none;">
+  <h2>Your Cart</h2>
+  <table id="cartTable">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <p>Total: $<span id="cartTotal">0.00</span></p>
+  <button onclick="checkout()">Pay with Square</button>
+</div>
 
-    <label>
-      Your Name:
-      <input type="text" id="customerName" required>
-    </label>
+<script>
+let cart = [];
 
-    <label>
-      Contact (Email or Phone):
-      <input type="text" id="contactInfo" required>
-    </label>
+// Add item to cart
+function addToCart(name, price){
+  const existing = cart.find(item=>item.name===name);
+  if(existing){ existing.qty += 1; }
+  else{ cart.push({name, price, qty:1}); }
+  renderCart();
+}
 
-    <button type="submit">Pay with Square</button>
-  </form>
+// Render cart table
+function renderCart(){
+  const tbody = document.querySelector("#cartTable tbody");
+  tbody.innerHTML = "";
+  let total = 0;
+  cart.forEach((item,index)=>{
+    const subtotal = (item.price*item.qty).toFixed(2);
+    total += parseFloat(subtotal);
+    const row = document.createElement("tr");
+    row.innerHTML = `<td>${item.name}</td>
+                     <td>$${item.price}</td>
+                     <td>${item.qty}</td>
+                     <td>$${subtotal}</td>
+                     <td><button onclick="removeItem(${index})">Remove</button></td>`;
+    tbody.appendChild(row);
+  });
+  document.getElementById("cartTotal").innerText = total.toFixed(2);
+  document.getElementById("cart").style.display = cart.length>0 ? "block" : "none";
+}
 
-  <script>
-    let currentItem = "";
-    let currentPrice = 0;
+// Remove item from cart
+function removeItem(index){
+  cart.splice(index,1);
+  renderCart();
+}
 
-    function selectItem(name, price) {
-      currentItem = name;
-      currentPrice = price;
-      document.getElementById("selectedItemText").innerText = `${name} — $${price}`;
-      document.getElementById("orderForm").style.display = "block";
-      window.scrollTo(0, document.getElementById("orderForm").offsetTop);
-    }
-
-    function goToPayment() {
-      const qty = parseInt(document.getElementById("quantity").value);
-      const total = (currentPrice * qty).toFixed(2);
-
-      const squareLink = "https://square.link/u/5ckYGFZJ";
-
-      alert(`Redirecting to payment… Total: $${total}`);
-      window.location.href = squareLink;
-      return false;
-    }
-  </script>
-</body>
-</html>
+// Checkout
+function checkout(){
+  const total = cart.reduce((sum,item)=>sum+item.price*item.qty,0).toFixed(2);
+  alert(`Redirecting to payment… Total: $${total}`);
+  // Redirect to Square payment link
+  window.location.href = "https://square.link/u/5ckYGFZJ";
+}
+</script>
