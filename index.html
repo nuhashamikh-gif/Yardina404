@@ -98,6 +98,8 @@
         color: var(--accent);
     }
 
+    /* HERO + SLIDER */
+
     .hero {
         max-width: 1100px;
         margin: 20px auto 40px;
@@ -182,7 +184,24 @@
         background: #000;
     }
 
-    .hero-image img {
+    .hero-slider {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .hero-slide {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transition: opacity 0.6s ease;
+    }
+
+    .hero-slide.active {
+        opacity: 1;
+    }
+
+    .hero-slide img {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -285,10 +304,31 @@
         border-color: var(--accent-soft);
     }
 
-    .item img {
-        width: 100%;
+    .item-img-wrap {
+        position: relative;
         border-radius: 10px;
+        overflow: hidden;
         cursor: pointer;
+    }
+
+    .item-img-wrap img {
+        width: 100%;
+        display: block;
+        transition: opacity 0.3s ease;
+    }
+
+    .item-img-wrap img.hover-img {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+    }
+
+    .item-img-wrap:hover img.hover-img {
+        opacity: 1;
+    }
+
+    .item-img-wrap:hover img.main-img {
+        opacity: 0;
     }
 
     .item h4 {
@@ -308,36 +348,63 @@
         font-size: 0.8rem;
     }
 
-    .info-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-        gap: 20px;
+    /* ORDER FORM */
+
+    .order-form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        background: rgba(0,0,0,0.7);
+        padding: 20px;
+        border-radius: 14px;
+        border: 1px solid #333;
+        max-width: 500px;
     }
 
-    .info-card {
-        background: rgba(0,0,0,0.7);
-        border-radius: 14px;
-        padding: 16px;
-        border: 1px solid #333;
-        font-size: 0.9rem;
+    .order-form label {
+        font-size: 0.85rem;
         color: var(--muted);
     }
 
-    .info-card h3 {
-        margin-top: 0;
-        margin-bottom: 8px;
-        color: var(--accent);
-        font-size: 1rem;
+    .order-form input,
+    .order-form select,
+    .order-form textarea {
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #444;
+        background: #111;
+        color: var(--text);
+        font-size: 0.9rem;
     }
 
-    .info-list {
-        list-style: none;
-        padding-left: 0;
-        margin: 0;
-        font-size: 0.85rem;
+    .order-form input:focus,
+    .order-form select:focus,
+    .order-form textarea:focus {
+        border-color: var(--accent);
+        outline: none;
     }
 
-    .info-list li { margin-bottom: 4px; }
+    /* GALLERY */
+
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 16px;
+    }
+
+    .gallery-item {
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid #222;
+        cursor: pointer;
+    }
+
+    .gallery-item img {
+        width: 100%;
+        display: block;
+    }
+
+    /* LIGHTBOX */
 
     #lightbox {
         position: fixed;
@@ -392,7 +459,6 @@
 
     @media (max-width: 800px) {
         .hero { grid-template-columns: 1fr; }
-        .info-grid { grid-template-columns: 1fr; }
         .topbar { flex-direction: column; gap: 8px; }
         nav { justify-content: center; }
     }
@@ -414,7 +480,7 @@
             <a href="#home">Home</a>
             <a href="#order">Order</a>
             <a href="#menu">Menu</a>
-            <a href="#about">About</a>
+            <a href="#gallery">Gallery</a>
             <a href="#visit">Visit</a>
         </nav>
     </div>
@@ -423,7 +489,7 @@
 <section class="hero" id="home">
     <div class="hero-text">
         <h1>Fresh <span>Mediterranean</span> Flavor, Every Day.</h1>
-        <p>Falafel, shawarma, kababs, and more—crafted with care, bold spices, and warm hospitality.</p>
+        <p>Falafel, shawarma, kababs, pasta, pizza, and more—crafted with care, bold spices, and warm hospitality.</p>
 
         <div class="hero-tags">
             <div class="hero-tag">Falafel • Shawarma • Kabab</div>
@@ -432,7 +498,7 @@
         </div>
 
         <div class="hero-cta">
-            <button class="btn-primary" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">Order Now</button>
+            <button class="btn-primary" onclick="document.getElementById('order-form').scrollIntoView({behavior:'smooth'})">Order Now</button>
             <button class="btn-outline" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">View Full Menu</button>
         </div>
 
@@ -443,8 +509,28 @@
     </div>
 
     <div class="hero-image">
-        <img src="images/Falafel platter 3.jpg" alt="Falafel platter">
-        <div class="hero-badge">Signature Falafel Platter • Customer Favorite</div>
+        <div class="hero-slider" id="heroSlider">
+            <div class="hero-slide active">
+                <img src="images/Falafel platter 3.jpg" alt="Falafel platter">
+                <div class="hero-badge">Signature Falafel Platter • Customer Favorite</div>
+            </div>
+            <div class="hero-slide">
+                <img src="images/veggie platter.jpg" alt="Veggie platter">
+                <div class="hero-badge">Veggie Platter • Fresh & Colorful</div>
+            </div>
+            <div class="hero-slide">
+                <img src="images/vegetable pizza.jpg" alt="Vegetable pizza">
+                <div class="hero-badge">Vegetable Pizza • Oven Baked</div>
+            </div>
+            <div class="hero-slide">
+                <img src="images/pasta tomato.jpg" alt="Tomato mushroom pasta">
+                <div class="hero-badge">Tomato Mushroom Spaghetti • New</div>
+            </div>
+            <div class="hero-slide">
+                <img src="images/pasta creamy.jpg" alt="Creamy mushroom pasta">
+                <div class="hero-badge">Creamy Spinach Mushroom Pasta</div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -461,84 +547,76 @@
 
 <section class="section" id="menu">
     <h2>Menu</h2>
-    <div class="section-sub">Explore our Mediterranean favorites, from crispy falafel to hearty platters and oven‑baked pizzas.</div>
+    <div class="section-sub">Explore our Mediterranean favorites, from crispy falafel to hearty platters, pasta, and oven‑baked pizzas.</div>
 
+    <!-- FALAFEL -->
     <div class="category">
         <h3>Falafel</h3>
         <div class="menu-grid">
 
             <div class="item">
-                <img src="images/Flafel Sandwich.jpg">
+                <div class="item-img-wrap">
+                    <img src="images/falafel sandwich 1.jpg" class="main-img" alt="Falafel Sandwich">
+                    <img src="images/falafel sandwich 2.jpg" class="hover-img" alt="Falafel Sandwich alt">
+                </div>
                 <h4>Falafel Sandwich</h4>
                 <div class="price">$6.99</div>
                 <div class="desc">Crispy falafel wrapped with tahini, fresh veggies, and warm pita.</div>
             </div>
 
             <div class="item">
-                <img src="images/falafel sandwitch.jpg">
-                <h4>Falafel Sandwich (Classic)</h4>
-                <div class="price">$6.99</div>
-                <div class="desc">Our classic falafel sandwich with house‑made sauce.</div>
+                <div class="item-img-wrap">
+                    <img src="images/falafel box 1.jpg" class="main-img" alt="Falafel Box">
+                    <img src="images/falafel box 2.jpg" class="hover-img" alt="Falafel Box alt">
+                </div>
+                <h4>Falafel Box</h4>
+                <div class="price">$9.99</div>
+                <div class="desc">Falafel with rice, salad, and pickles in a convenient box.</div>
             </div>
 
             <div class="item">
-                <img src="images/Falafel meal.jpg">
+                <div class="item-img-wrap">
+                    <img src="images/falafel platter 1.jpg" class="main-img" alt="Falafel Meal">
+                    <img src="images/falafel platter 2.jpg" class="hover-img" alt="Falafel Meal alt">
+                </div>
                 <h4>Falafel Meal</h4>
                 <div class="price">$11.99</div>
                 <div class="desc">Falafel served with rice, salad, hummus, and pita.</div>
             </div>
 
             <div class="item">
-                <img src="images/Falafel combo.jpg">
+                <div class="item-img-wrap">
+                    <img src="images/falafel salad 1.jpg" class="main-img" alt="Falafel Combo">
+                    <img src="images/falafel salad 2.jpg" class="hover-img" alt="Falafel Combo alt">
+                </div>
                 <h4>Falafel Combo</h4>
                 <div class="price">$13.99</div>
-                <div class="desc">Falafel plate with fries and a drink.</div>
-            </div>
-
-            <div class="item">
-                <img src="images/Falafel box.jpg">
-                <h4>Falafel Box</h4>
-                <div class="price">$9.99</div>
-                <div class="desc">A quick falafel box with salad and tahini.</div>
-            </div>
-
-            <div class="item">
-                <img src="images/Falafel platter 2.jpg">
-                <h4>Falafel Platter 2</h4>
-                <div class="price">$12.99</div>
-                <div class="desc">A hearty falafel platter with classic sides.</div>
-            </div>
-
-            <div class="item">
-                <img src="images/Falafel platter 3.jpg">
-                <h4>Falafel Platter 3</h4>
-                <div class="price">$13.49</div>
-                <div class="desc">Falafel with extra toppings and sauces.</div>
-            </div>
-
-            <div class="item">
-                <img src="images/Flafel platter 4.jpg">
-                <h4>Falafel Platter 4</h4>
-                <div class="price">$14.49</div>
-                <div class="desc">Premium falafel platter with hummus and rice.</div>
+                <div class="desc">Falafel plate with fries, salad, and a drink.</div>
             </div>
 
         </div>
     </div>
 
+    <!-- SHAWARMA -->
     <div class="category">
         <h3>Shawarma</h3>
         <div class="menu-grid">
 
             <div class="item">
-                <img src="images/Shawarma Sandwitch.jpg">
+                <div class="item-img-wrap">
+                    <img src="images/shawarma sandwich 1.jpg" class="main-img" alt="Shawarma Sandwich">
+                    <img src="images/shawarma sandwich 2.jpg" class="hover-img" alt="Shawarma Sandwich alt">
+                </div>
                 <h4>Shawarma Sandwich</h4>
                 <div class="price">$8.99</div>
                 <div class="desc">Juicy chicken shawarma wrapped with garlic sauce and pickles.</div>
             </div>
 
             <div class="item">
-                <img src="images/Shawarma platter.jpg">
+                <div class="item-img-wrap">
+                    <img src="images/shawarma platter 1.jpg" class="main-img" alt="Shawarma Platter">
+                    <img src="images/shawarma platter 2.jpg" class="hover-img" alt="Shawarma Platter alt">
+                </div>
                 <h4>Shawarma Platter</h4>
                 <div class="price">$14.99</div>
                 <div class="desc">Shawarma served with rice, salad, and garlic dip.</div>
@@ -547,25 +625,223 @@
         </div>
     </div>
 
+    <!-- PLATTERS -->
     <div class="category">
         <h3>Platters</h3>
         <div class="menu-grid">
 
             <div class="item">
-                <img src="images/Sheesh kabab plater.png">
+                <div class="item-img-wrap">
+                    <img src="images/kabab platter 1.jpg" class="main-img" alt="Sheesh Kabab Platter">
+                    <img src="images/kabab platter 2.jpg" class="hover-img" alt="Sheesh Kabab Platter alt">
+                </div>
                 <h4>Sheesh Kabab Platter</h4>
                 <div class="price">$15.99</div>
-                <div class="desc">Grilled kababs served with rice and salad.</div>
+                <div class="desc">Grilled kababs served with rice, salad, and sauce.</div>
             </div>
 
             <div class="item">
-                <img src="images/kabab platter.png">
-                <h4>Kabab Platter</h4>
+                <div class="item-img-wrap">
+                    <img src="images/chicken kebab 1.jpg" class="main-img" alt="Chicken Kebab Platter">
+                    <img src="images/chicken kebab 2.jpg" class="hover-img" alt="Chicken Kebab Platter alt">
+                </div>
+                <h4>Chicken Kebab Platter</h4>
                 <div class="price">$14.99</div>
-                <div class="desc">Tender kababs with rice, hummus, and pita.</div>
+                <div class="desc">Marinated grilled chicken over rice with salad and sauce.</div>
             </div>
 
             <div class="item">
-                <img src="images/veggie platter.jpg">
-                <h4>Veggie Platter
- 
+                <div class="item-img-wrap">
+                    <img src="images/veggie platter.jpg" class="main-img" alt="Veggie Platter">
+                    <img src="images/veggie platter 2.jpg" class="hover-img" alt="Veggie Platter alt">
+                </div>
+                <h4>Veggie Platter</h4>
+                <div class="price">$12.99</div>
+                <div class="desc">A colorful vegetarian platter with falafel, hummus, salad, and warm pita.</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- PASTA -->
+    <div class="category">
+        <h3>Pasta</h3>
+        <div class="menu-grid">
+
+            <div class="item">
+                <div class="item-img-wrap">
+                    <img src="images/pasta tomato 1.jpg" class="main-img" alt="Tomato Mushroom Spaghetti">
+                    <img src="images/pasta tomato 2.jpg" class="hover-img" alt="Tomato Mushroom Spaghetti alt">
+                </div>
+                <h4>Tomato Mushroom Spaghetti</h4>
+                <div class="price">$13.99</div>
+                <div class="desc">Spaghetti tossed in a tomato-based sauce with sautéed mushrooms and fresh herbs.</div>
+            </div>
+
+            <div class="item">
+                <div class="item-img-wrap">
+                    <img src="images/pasta creamy 1.jpg" class="main-img" alt="Creamy Spinach Mushroom Pasta">
+                    <img src="images/pasta creamy 2.jpg" class="hover-img" alt="Creamy Spinach Mushroom Pasta alt">
+                </div>
+                <h4>Creamy Spinach Mushroom Pasta</h4>
+                <div class="price">$14.49</div>
+                <div class="desc">Pasta in a rich creamy sauce with mushrooms and spinach.</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- PIZZA -->
+    <div class="category">
+        <h3>Pizza</h3>
+        <div class="menu-grid">
+
+            <div class="item">
+                <div class="item-img-wrap">
+                    <img src="images/vegetable pizza 1.jpg" class="main-img" alt="Vegetable Pizza">
+                    <img src="images/vegetable pizza 2.jpg" class="hover-img" alt="Vegetable Pizza alt">
+                </div>
+                <h4>Vegetable Pizza</h4>
+                <div class="price">$15.99</div>
+                <div class="desc">Oven-baked pizza topped with mixed vegetables and mozzarella.</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- APPETIZERS -->
+    <div class="category">
+        <h3>Appetizers</h3>
+        <div class="menu-grid">
+
+            <div class="item">
+                <div class="item-img-wrap">
+                    <img src="images/spring rolls 1.jpg" class="main-img" alt="Spring Rolls">
+                    <img src="images/spring rolls 2.jpg" class="hover-img" alt="Spring Rolls alt">
+                </div>
+                <h4>Spring Rolls</h4>
+                <div class="price">$6.49</div>
+                <div class="desc">Crispy vegetable spring rolls served with dipping sauce.</div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<section class="section" id="order-form">
+    <h2>Place Your Order</h2>
+    <div class="section-sub">Fill out the form below and we’ll prepare your meal fresh.</div>
+
+    <form class="order-form">
+        <label>Full Name</label>
+        <input type="text" required>
+
+        <label>Phone Number</label>
+        <input type="text" required>
+
+        <label>Select Item</label>
+        <select required>
+            <option value="">Choose an item</option>
+            <option>Falafel Sandwich</option>
+            <option>Falafel Box</option>
+            <option>Falafel Meal</option>
+            <option>Falafel Combo</option>
+            <option>Shawarma Sandwich</option>
+            <option>Shawarma Platter</option>
+            <option>Sheesh Kabab Platter</option>
+            <option>Chicken Kebab Platter</option>
+            <option>Veggie Platter</option>
+            <option>Tomato Mushroom Spaghetti</option>
+            <option>Creamy Spinach Mushroom Pasta</option>
+            <option>Vegetable Pizza</option>
+            <option>Spring Rolls</option>
+        </select>
+
+        <label>Quantity</label>
+        <input type="number" min="1" value="1" required>
+
+        <label>Pickup or Dine‑in</label>
+        <select required>
+            <option>Pickup</option>
+            <option>Dine‑in</option>
+        </select>
+
+        <label>Notes (optional)</label>
+        <textarea rows="4" placeholder="Extra sauce, no onions, etc."></textarea>
+
+        <button class="btn-primary" type="submit">Submit Order</button>
+    </form>
+</section>
+
+<section class="section" id="gallery">
+    <h2>Gallery</h2>
+    <div class="section-sub">A closer look at some of our favorite dishes.</div>
+
+    <div class="gallery-grid">
+        <div class="gallery-item"><img src="images/falafel box 1.jpg" alt="Falafel box"></div>
+        <div class="gallery-item"><img src="images/falafel sandwich 1.jpg" alt="Falafel sandwich"></div>
+        <div class="gallery-item"><img src="images/veggie platter.jpg" alt="Veggie platter"></div>
+        <div class="gallery-item"><img src="images/vegetable pizza 1.jpg" alt="Vegetable pizza"></div>
+        <div class="gallery-item"><img src="images/pasta tomato 1.jpg" alt="Tomato pasta"></div>
+        <div class="gallery-item"><img src="images/pasta creamy 1.jpg" alt="Creamy pasta"></div>
+        <div class="gallery-item"><img src="images/spring rolls 1.jpg" alt="Spring rolls"></div>
+        <div class="gallery-item"><img src="images/chicken kebab 1.jpg" alt="Chicken kebab"></div>
+    </div>
+</section>
+
+<div id="lightbox">
+    <img src="" alt="Preview">
+</div>
+
+<footer id="visit">
+    <div class="footer-inner">
+        <div class="footer-col">
+            <div class="footer-title">YARDINA404</div>
+            <div>Fresh Mediterranean flavors in the heart of Newmarket. Falafel, shawarma, kababs, pasta, pizza, and more.</div>
+        </div>
+        <div class="footer-col">
+            <div class="footer-title">Visit Us</div>
+            <div>123 Main Street<br>Newmarket, ON</div>
+            <div>Open daily • 11:00 AM – 10:00 PM</div>
+        </div>
+        <div class="footer-col">
+            <div class="footer-title">Contact</div>
+            <div>Phone: (555) 123‑4567</div>
+            <div>Email: info@yardina404.com</div>
+        </div>
+    </div>
+    <div class="footer-inner footer-bottom">
+        © <span id="year"></span> YARDINA404. All rights reserved.
+    </div>
+</footer>
+
+<script>
+    // Hero slider
+    const slides = document.querySelectorAll('.hero-slide');
+    let currentSlide = 0;
+    setInterval(() => {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }, 4000);
+
+    // Lightbox for gallery
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+    document.querySelectorAll('.gallery-item img, .item-img-wrap img').forEach(img => {
+        img.addEventListener('click', () => {
+            lightboxImg.src = img.src;
+            lightbox.style.display = 'flex';
+        });
+    });
+    lightbox.addEventListener('click', () => {
+        lightbox.style.display = 'none';
+    });
+
+    // Year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
