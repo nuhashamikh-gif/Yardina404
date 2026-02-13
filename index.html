@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yardina404 — Order Online</title>
-  <style>
-    body { font-family: Arial; padding: 20px; background: #fdfdfd; }
-    h1,h2{text-align:center;}
-    .menu-item{border:1px solid #ddd; padding:16px; margin:12px auto; max-width:500px; border-radius:8px;}
-    .menu-item button{background:#28a745;color:white;border:none;padding:10px 14px;cursor:pointer;border-radius:4px;}
-    #cart{max-width:500px;margin:20px auto;border:1px solid #ddd;padding:20px;border-radius:8px;}
-    #cart table{width:100%;border-collapse:collapse;}
-    #cart table, #cart th, #cart td{border:1px solid #ccc;}
-    #cart th, #cart td{padding:8px;text-align:center;}
-    #cart button{background:#0077cc;color:white;padding:8px;border:none;border-radius:4px;cursor:pointer;}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yardina404 — Online Ordering</title>
+<style>
+body { font-family: Arial, sans-serif; padding: 20px; background: #fbfbfb; }
+h1, h2 { text-align: center; }
+.menu-item { border:1px solid #ddd; padding:16px; margin:12px auto; max-width:500px; border-radius:8px; }
+.menu-item button { background:#28a745; color:white; border:none; padding:10px 14px; cursor:pointer; border-radius:4px; }
+#cart { max-width:600px; margin:20px auto; border:1px solid #ddd; padding:20px; border-radius:8px; display:none; }
+#cart table { width:100%; border-collapse:collapse; margin-bottom:10px; }
+#cart th, #cart td { border:1px solid #ccc; padding:8px; text-align:center; }
+#cart button { background:#0077cc; color:white; padding:8px; border:none; border-radius:4px; cursor:pointer; }
+input, label { display:block; width:100%; margin-bottom:10px; }
+</style>
 </head>
 <body>
 
@@ -36,67 +36,83 @@
 <div class="menu-item"><h3>Fries Small — $3</h3><button onclick="addToCart('Fries Small',3)">Add to Cart</button></div>
 <div class="menu-item"><h3>Fries Large — $5</h3><button onclick="addToCart('Fries Large',5)">Add to Cart</button></div>
 
-<!-- Cart -->
-<div id="cart" style="display:none;">
-  <h2>Your Cart</h2>
-  <table id="cartTable">
-    <thead>
-      <tr>
-        <th>Item</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Subtotal</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-  <p>Total: $<span id="cartTotal">0.00</span></p>
-  <button onclick="checkout()">Pay with Square</button>
+<!-- Cart & Order Section -->
+<div id="cart">
+<h2>Your Cart</h2>
+<table id="cartTable">
+<thead><tr><th>Item</th><th>Price</th><th>Qty</th><th>Subtotal</th><th>Action</th></tr></thead>
+<tbody></tbody>
+</table>
+<p><strong>Total: $<span id="cartTotal">0.00</span></strong></p>
+
+<label>Your Name:<input type="text" id="customerName" placeholder="Enter your name" required></label>
+<label>Email or Phone:<input type="text" id="contactInfo" placeholder="Email or phone" required></label>
+
+<button onclick="submitOrder()">Pay & Submit Order</button>
 </div>
 
 <script>
 let cart = [];
 
-// Add item to cart
-function addToCart(name, price){
-  const existing = cart.find(item=>item.name===name);
-  if(existing){ existing.qty += 1; }
-  else{ cart.push({name, price, qty:1}); }
+function addToCart(name, price) {
+  const existing = cart.find(i => i.name === name);
+  if (existing) existing.qty++;
+  else cart.push({ name, price, qty: 1 });
   renderCart();
 }
 
-// Render cart table
-function renderCart(){
+function renderCart() {
   const tbody = document.querySelector("#cartTable tbody");
   tbody.innerHTML = "";
   let total = 0;
-  cart.forEach((item,index)=>{
-    const subtotal = (item.price*item.qty).toFixed(2);
+  cart.forEach((item, idx) => {
+    const subtotal = (item.price * item.qty).toFixed(2);
     total += parseFloat(subtotal);
-    const row = document.createElement("tr");
-    row.innerHTML = `<td>${item.name}</td>
-                     <td>$${item.price}</td>
-                     <td>${item.qty}</td>
-                     <td>$${subtotal}</td>
-                     <td><button onclick="removeItem(${index})">Remove</button></td>`;
-    tbody.appendChild(row);
+    tbody.innerHTML += `
+      <tr>
+        <td>${item.name}</td>
+        <td>$${item.price}</td>
+        <td>${item.qty}</td>
+        <td>$${subtotal}</td>
+        <td><button onclick="removeItem(${idx})">Remove</button></td>
+      </tr>`;
   });
   document.getElementById("cartTotal").innerText = total.toFixed(2);
-  document.getElementById("cart").style.display = cart.length>0 ? "block" : "none";
+  document.getElementById("cart").style.display = cart.length > 0 ? "block" : "none";
 }
 
-// Remove item from cart
-function removeItem(index){
-  cart.splice(index,1);
+function removeItem(index) {
+  cart.splice(index, 1);
   renderCart();
 }
 
-// Checkout
-function checkout(){
-  const total = cart.reduce((sum,item)=>sum+item.price*item.qty,0).toFixed(2);
-  alert(`Redirecting to payment… Total: $${total}`);
-  // Redirect to Square payment link
-  window.location.href = "https://square.link/u/5ckYGFZJ";
+function submitOrder() {
+  const name = encodeURIComponent(document.getElementById("customerName").value.trim());
+  const contact = encodeURIComponent(document.getElementById("contactInfo").value.trim());
+  const details = encodeURIComponent(
+    cart.map(i => `${i.name} x${i.qty} = $${(i.price*i.qty).toFixed(2)}`).join("\n") +
+    `\nTotal: $${cart.reduce((s,i)=>s+i.price*i.qty,0).toFixed(2)}`
+  );
+
+  if (!name || !contact) {
+    alert("Please enter your name and contact info.");
+    return;
+  }
+
+  // Google Form pre-filled URL
+  const formURL = `https://docs.google.com/forms/d/e/1FAIpQLSedj0YIOl3hhFhW9LX2RBEq6JGMp_ZVkFkGuj7UJgaE8kKeXA/viewform?usp=pp_url&entry.2110805065=${name}&entry.1178215040=${contact}&entry.1422132313=${details}`;
+
+  // Open Google Form in new tab
+  window.open(formURL, "_blank");
+
+  // Open Square payment link
+  window.open("https://square.link/u/5ckYGFZJ", "_blank");
+
+  alert("Please fill out the form then complete payment in the new tabs.");
 }
 </script>
+
+</body>
+</html>
+
+    
