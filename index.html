@@ -1,22 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yardina404</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
-    }
-    h1 {
-      color: #333;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yardina Food</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+header {
+  background: #b22222;
+  color: white;
+  padding: 25px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 36px;
+}
+
+nav {
+  background: #222;
+  text-align: center;
+  padding: 12px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 20px;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #ffcc00;
+}
+
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+}
+
+.hero h2 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.section {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card h3 {
+  margin: 15px 0 5px;
+}
+
+.card p {
+  padding: 0 15px 15px;
+}
+
+.contact {
+  background: #fff;
+  padding: 40px;
+}
+
+footer {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+</style>
 </head>
+
 <body>
-  <h1>Welcome to Yardina404 🎉</h1>
-  <p>This page is live now — update content as you want!</p>
+
+<header>
+  <h1>Yardina Food</h1>
+  <p>Fresh • Authentic • Mediterranean</p>
+</header>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#menu">Menu</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<div class="hero">
+  <h2>Welcome to Yardina Food</h2>
+  <p>Serving fresh falafel, shawarma & homemade Mediterranean flavors.</p>
+</div>
+
+<div class="section" id="about">
+  <h2>About Us</h2>
+  <p>Located at 2900 Steeles Ave East, Thornhill.  
+  We prepare authentic Mediterranean food daily with fresh ingredients and bold flavors.</p>
+</div>
+
+<div class="section" id="menu">
+  <h2>Our Menu</h2>
+
+  <div class="menu-grid">
+
+    <div class="card">
+      <img src="images/falafel.jpg" alt="Falafel">
+      <h3>Falafel Wrap</h3>
+      <p>Crispy falafel with fresh vegetables and tahini sauce.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/shawarma.jpg" alt="Shawarma">
+      <h3>Shawarma Wrap</h3>
+      <p>Juicy seasoned meat wrapped with garlic sauce.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/rice-plate.jpg" alt="Rice Plate">
+      <h3>Rice & Chicken Plate</h3>
+      <p>Grilled chicken served over seasoned rice.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/salad.jpg" alt="Salad">
+      <h3>Fresh Salads</h3>
+      <p>Healthy Mediterranean salads made fresh daily.</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="section contact" id="contact">
+  <h2>Contact Us</h2>
+  <p>📍 2900 Steeles Ave East, Thornhill, Ontario</p>
+  <p>📞 416-817-1625</p>
+  <p>✉️ Yardina404@outlook.com</p>
+</div>
+
+<footer>
+  © 2026 Yardina Food. All rights reserved.
+</footer>
+
 </body>
 </html>
