@@ -1,118 +1,226 @@
+html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yardina404 — Online Ordering</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Yardina Restaurant</title>
 <style>
-body { font-family: Arial, sans-serif; padding: 20px; background: #fbfbfb; }
-h1, h2 { text-align: center; }
-.menu-item { border:1px solid #ddd; padding:16px; margin:12px auto; max-width:500px; border-radius:8px; }
-.menu-item button { background:#28a745; color:white; border:none; padding:10px 14px; cursor:pointer; border-radius:4px; }
-#cart { max-width:600px; margin:20px auto; border:1px solid #ddd; padding:20px; border-radius:8px; display:none; }
-#cart table { width:100%; border-collapse:collapse; margin-bottom:10px; }
-#cart th, #cart td { border:1px solid #ccc; padding:8px; text-align:center; }
-#cart button { background:#0077cc; color:white; padding:8px; border:none; border-radius:4px; cursor:pointer; }
-input, label { display:block; width:100%; margin-bottom:10px; }
+:root{--primary:#2f5d50;--accent:#f4b41a;--light:#f9f7f3;--dark:#222;--muted:#666;--radius:8px;}
+*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;}
+body{background:var(--light);color:var(--dark);line-height:1.6;}
+header{background:linear-gradient(135deg,rgba(47,93,80,.95),rgba(15,32,27,.95)),url("https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg") center/cover no-repeat;color:#fff;padding:1.5rem 0 4.5rem;}
+.container{width:90%;max-width:1100px;margin:0 auto;}
+nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;}
+.logo{font-size:1.4rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;display:flex;align-items:center;gap:.4rem;}
+.logo span{display:inline-block;width:26px;height:26px;border-radius:50%;background:var(--accent);position:relative;}
+.logo span::before{content:"";position:absolute;inset:5px;border-radius:50%;border:2px solid var(--primary);}
+nav ul{list-style:none;display:flex;gap:1.5rem;font-size:.95rem;}
+nav a{color:#fdfdfd;text-decoration:none;text-transform:uppercase;letter-spacing:.08em;font-size:.8rem;position:relative;}
+nav a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--accent);transition:.2s;}
+nav a:hover::after{width:100%;}
+.hero{display:grid;grid-template-columns:2fr 1.6fr;gap:2.5rem;align-items:center;}
+.hero-text h1{font-size:clamp(2.4rem,4vw,3.2rem);margin-bottom:1rem;}
+.hero-text h1 span{color:var(--accent);}
+.hero-text p{max-width:480px;color:#f0f0f0;margin-bottom:1.5rem;}
+.hero-meta{display:flex;flex-wrap:wrap;gap:1.5rem;margin-bottom:2rem;font-size:.9rem;}
+.btn-row{display:flex;gap:.8rem;}
+.btn{border:none;cursor:pointer;padding:.8rem 1.4rem;border-radius:999px;font-size:.9rem;text-transform:uppercase;letter-spacing:.08em;font-weight:600;text-decoration:none;}
+.btn-primary{background:var(--accent);color:#1b1b1b;}
+.btn-outline{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.6);}
+.hero-card{background:rgba(249,247,243,.98);border-radius:var(--radius);padding:1.5rem;box-shadow:0 18px 40px rgba(0,0,0,.25);}
+.hero-card h2{font-size:1.1rem;margin-bottom:.8rem;color:var(--primary);text-transform:uppercase;letter-spacing:.12em;}
+.hero-card p{font-size:.9rem;color:var(--muted);margin-bottom:1rem;}
+.hero-card ul{list-style:none;font-size:.9rem;margin-bottom:1rem;}
+.hero-card li{margin-bottom:.4rem;display:flex;align-items:center;gap:.4rem;}
+.hero-card li::before{content:"•";color:var(--accent);font-size:1.2rem;}
+.badge-row{display:flex;gap:.5rem;margin-top:.5rem;}
+.badge{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;padding:.3rem .7rem;border-radius:999px;border:1px solid rgba(0,0,0,.08);background:#fff;color:var(--muted);}
+main{margin-top:-2.5rem;padding-bottom:3rem;}
+section{padding:2.5rem 0;}
+.section-header{text-align:center;margin-bottom:2rem;}
+.section-header h2{font-size:1.6rem;margin-bottom:.4rem;color:var(--primary);}
+.section-header p{color:var(--muted);font-size:.95rem;}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.5rem;}
+.menu-card{background:#fff;border-radius:var(--radius);padding:1.2rem;box-shadow:0 8px 20px rgba(0,0,0,.06);}
+.menu-card-header{display:flex;justify-content:space-between;align-items:baseline;}
+.menu-price{font-weight:700;color:var(--primary);}
+.menu-tag{font-size:.75rem;text-transform:uppercase;color:var(--primary);background:rgba(47,93,80,.06);padding:.2rem .6rem;border-radius:999px;}
+.add-btn{background:var(--primary);color:#fff;padding:6px 10px;border-radius:6px;cursor:pointer;font-size:.85rem;border:none;margin-top:6px;}
+/* CART */
+#cart-button{position:fixed;bottom:20px;right:20px;background:var(--primary);color:#fff;padding:12px 18px;border-radius:50px;cursor:pointer;font-size:1rem;z-index:999;}
+#cart-panel{position:fixed;top:0;right:-350px;width:300px;height:100%;background:#fff;box-shadow:-4px 0 12px rgba(0,0,0,.15);padding:20px;transition:.3s;z-index:1000;}
+#cart-panel.open{right:0;}
+#cart-items{list-style:none;margin:0 0 20px;padding:0;}
+#cart-items li{margin-bottom:10px;border-bottom:1px solid #eee;padding-bottom:8px;}
+.pay-btn{display:block;margin-top:12px;background:var(--accent);color:#000;padding:10px;text-align:center;border-radius:6px;text-decoration:none;font-weight:bold;}
+footer{border-top:1px solid rgba(0,0,0,.06);padding:1.5rem 0 2rem;font-size:.85rem;color:var(--muted);}
+.footer-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.8rem;}
+.footer-inner a{text-decoration:none;color:var(--primary);}
 </style>
 </head>
+
 <body>
 
-<h1>Welcome to Yardina404</h1>
-<h2>Menu</h2>
+<!-- CART BUTTON -->
+<div id="cart-button" onclick="toggleCart()">🛒 <span id="cart-count">0</span></div>
 
-<!-- Menu Items -->
-<div class="menu-item"><h3>Falafel Platter Small — $12</h3><button onclick="addToCart('Falafel Platter Small',12)">Add to Cart</button></div>
-<div class="menu-item"><h3>Falafel Platter Large — $17</h3><button onclick="addToCart('Falafel Platter Large',17)">Add to Cart</button></div>
-<div class="menu-item"><h3>Shawarma Platter Small — $15</h3><button onclick="addToCart('Shawarma Platter Small',15)">Add to Cart</button></div>
-<div class="menu-item"><h3>Shawarma Platter Large — $20</h3><button onclick="addToCart('Shawarma Platter Large',20)">Add to Cart</button></div>
-<div class="menu-item"><h3>Kabab Platter Small — $15</h3><button onclick="addToCart('Kabab Platter Small',15)">Add to Cart</button></div>
-<div class="menu-item"><h3>Kabab Platter Large — $20</h3><button onclick="addToCart('Kabab Platter Large',20)">Add to Cart</button></div>
-<div class="menu-item"><h3>Falafel Sandwich — $8</h3><button onclick="addToCart('Falafel Sandwich',8)">Add to Cart</button></div>
-<div class="menu-item"><h3>Shawarma Sandwich — $12</h3><button onclick="addToCart('Shawarma Sandwich',12)">Add to Cart</button></div>
-<div class="menu-item"><h3>Pizza Cheese — $7</h3><button onclick="addToCart('Pizza Cheese',7)">Add to Cart</button></div>
-<div class="menu-item"><h3>Zaatar — $8</h3><button onclick="addToCart('Zaatar',8)">Add to Cart</button></div>
-<div class="menu-item"><h3>Zaatar and Cheese — $10</h3><button onclick="addToCart('Zaatar and Cheese',10)">Add to Cart</button></div>
-<div class="menu-item"><h3>Fries Small — $3</h3><button onclick="addToCart('Fries Small',3)">Add to Cart</button></div>
-<div class="menu-item"><h3>Fries Large — $5</h3><button onclick="addToCart('Fries Large',5)">Add to Cart</button></div>
-
-<!-- Cart & Order Section -->
-<div id="cart">
-<h2>Your Cart</h2>
-<table id="cartTable">
-<thead><tr><th>Item</th><th>Price</th><th>Qty</th><th>Subtotal</th><th>Action</th></tr></thead>
-<tbody></tbody>
-</table>
-<p><strong>Total: $<span id="cartTotal">0.00</span></strong></p>
-
-<label>Your Name:<input type="text" id="customerName" placeholder="Enter your name" required></label>
-<label>Email or Phone:<input type="text" id="contactInfo" placeholder="Email or phone" required></label>
-
-<button onclick="submitOrder()">Pay & Submit Order</button>
+<!-- CART PANEL -->
+<div id="cart-panel">
+<h2>Your Order</h2>
+<ul id="cart-items"></ul>
+<div class="cart-footer">
+<strong>Total: $<span id="cart-total">0.00</span></strong>
+<a href="https://square.link/u/5ckYGFZJ" class="pay-btn">Order & Pay</a>
+</div>
 </div>
 
+<header id="top">
+<div class="container">
+<nav>
+<div class="logo"><span></span>Yardina</div>
+<ul>
+<li><a href="#menu">Menu</a></li>
+<li><a href="#about">Story</a></li>
+<li><a href="#visit">Visit</a></li>
+<li><a href="#reserve">Reserve</a></li>
+</ul>
+</nav>
+
+<div class="hero">
+<div class="hero-text">
+<h1>Garden‑fresh dining in the heart of <span>Yardina</span></h1>
+<p>Yardina Restaurant celebrates seasonal ingredients, wood‑fired flavors, and warm hospitality.</p>
+<div class="hero-meta">
+<div><strong>Open today</strong><span>5:00 pm – 11:00 pm</span></div>
+<div><strong>Location</strong><span>123 Greenway Lane</span></div>
+<div><strong>Reservations</strong><span>(555) 123‑4567</span></div>
+</div>
+<div class="btn-row">
+<a href="#reserve" class="btn btn-primary">Book a table</a>
+<a href="#menu" class="btn btn-outline">View menu</a>
+</div>
+</div>
+
+<aside class="hero-card">
+<h2>Tonight at Yardina</h2>
+<p>Chef’s tasting menu inspired by the late‑winter harvest.</p>
+<ul>
+<li>Four‑course tasting</li>
+<li>Wood‑fired sourdough</li>
+<li>Local ingredients</li>
+</ul>
+<div class="badge-row">
+<span class="badge">Seasonal</span>
+<span class="badge">Vegetarian</span>
+<span class="badge">Gluten‑free</span>
+</div>
+</aside>
+</div>
+</div>
+</header>
+
+<main>
+<div class="container">
+
+<section id="menu">
+<div class="section-header">
+<h2>Seasonal highlights</h2>
+<p>A look at what’s fresh this week.</p>
+</div>
+
+<div class="menu-grid">
+
+<article class="menu-card">
+<div class="menu-card-header"><h3>Charred Citrus Burrata</h3><span class="menu-price">$18</span></div>
+<p>Creamy burrata with wood‑fired citrus.</p>
+<span class="menu-tag">Starter</span>
+<button class="add-btn" onclick="addToCart('Charred Citrus Burrata',18)">Add to Cart</button>
+</article>
+
+<article class="menu-card">
+<div class="menu-card-header"><h3>Garden Herb Gnocchi</h3><span class="menu-price">$26</span></div>
+<p>Hand‑rolled gnocchi with peas and mint.</p>
+<span class="menu-tag">Vegetarian</span>
+<button class="add-btn" onclick="addToCart('Garden Herb Gnocchi',26)">Add to Cart</button>
+</article>
+
+<article class="menu-card">
+<div class="menu-card-header"><h3>Wood‑Fired Yardina Chicken</h3><span class="menu-price">$29</span></div>
+<p>Free‑range chicken roasted over oak.</p>
+<span class="menu-tag">Signature</span>
+<button class="add-btn" onclick="addToCart('Wood‑Fired Yardina Chicken',29)">Add to Cart</button>
+</article>
+
+<article class="menu-card">
+<div class="menu-card-header"><h3>Heirloom Carrot Tarte Tatin</h3><span class="menu-price">$12</span></div>
+<p>Caramelized carrots with goat cheese.</p>
+<span class="menu-tag">Dessert</span>
+<button class="add-btn" onclick="addToCart('Heirloom Carrot Tarte Tatin',12)">Add to Cart</button>
+</article>
+
+</div>
+</section>
+
+<section id="about">
+<div class="section-header">
+<h2>Our story</h2>
+<p>Rooted in the garden, shaped by the seasons.</p>
+</div>
+
+<p>Yardina began as backyard dinners—long tables, string lights, and whatever the garden offered.</p>
+<p>We work with local growers to keep our menu vibrant and sustainable.</p>
+</section>
+
+<section id="visit">
+<div class="section-header">
+<h2>Visit Yardina</h2>
+<p>Hours, location, and contact.</p>
+</div>
+
+<h3>Hours</h3>
+<p>Tue–Thu: 5–10 pm<br>Fri–Sat: 5–11 pm<br>Sun: 4–9 pm<br>Mon: Closed</p>
+
+<h3 id="reserve">Reservations & Contact</h3>
+<p>Phone: (555) 123‑4567<br>Email: hello@yardina.com<br>Address: 123 Greenway Lane</p>
+</section>
+
+</div>
+</main>
+
+<footer>
+<div class="container">
+<div class="footer-inner">
+<span>© <span id="year"></span> Yardina Restaurant</span>
+<a href="#top">Back to top</a>
+</div>
+</div>
+</footer>
+
 <script>
-let cart = [];
+document.getElementById("year").textContent=new Date().getFullYear();
 
-function addToCart(name, price) {
-  const existing = cart.find(i => i.name === name);
-  if (existing) existing.qty++;
-  else cart.push({ name, price, qty: 1 });
-  renderCart();
+let cart=[];
+function addToCart(name,price){
+cart.push({name,price});
+updateCart();
 }
-
-function renderCart() {
-  const tbody = document.querySelector("#cartTable tbody");
-  tbody.innerHTML = "";
-  let total = 0;
-  cart.forEach((item, idx) => {
-    const subtotal = (item.price * item.qty).toFixed(2);
-    total += parseFloat(subtotal);
-    tbody.innerHTML += `
-      <tr>
-        <td>${item.name}</td>
-        <td>$${item.price}</td>
-        <td>${item.qty}</td>
-        <td>$${subtotal}</td>
-        <td><button onclick="removeItem(${idx})">Remove</button></td>
-      </tr>`;
-  });
-  document.getElementById("cartTotal").innerText = total.toFixed(2);
-  document.getElementById("cart").style.display = cart.length > 0 ? "block" : "none";
+function updateCart(){
+let list=document.getElementById("cart-items");
+let count=document.getElementById("cart-count");
+let total=document.getElementById("cart-total");
+list.innerHTML="";
+let sum=0;
+cart.forEach(i=>{
+sum+=i.price;
+list.innerHTML+=`<li>${i.name} - $${i.price.toFixed(2)}</li>`;
+});
+count.textContent=cart.length;
+total.textContent=sum.toFixed(2);
 }
-
-function removeItem(index) {
-  cart.splice(index, 1);
-  renderCart();
-}
-
-function submitOrder() {
-  const name = encodeURIComponent(document.getElementById("customerName").value.trim());
-  const contact = encodeURIComponent(document.getElementById("contactInfo").value.trim());
-  const details = encodeURIComponent(
-    cart.map(i => `${i.name} x${i.qty} = $${(i.price*i.qty).toFixed(2)}`).join("\n") +
-    `\nTotal: $${cart.reduce((s,i)=>s+i.price*i.qty,0).toFixed(2)}`
-  );
-
-  if (!name || !contact) {
-    alert("Please enter your name and contact info.");
-    return;
-  }
-
-  // Google Form pre-filled URL
-  const formURL = `https://docs.google.com/forms/d/e/1FAIpQLSedj0YIOl3hhFhW9LX2RBEq6JGMp_ZVkFkGuj7UJgaE8kKeXA/viewform?usp=pp_url&entry.2110805065=${name}&entry.1178215040=${contact}&entry.1422132313=${details}`;
-
-  // Open Google Form in new tab
-  window.open(formURL, "_blank");
-
-  // Open Square payment link
-  window.open("https://square.link/u/5ckYGFZJ", "_blank");
-
-  alert("Please fill out the form then complete payment in the new tabs.");
+function toggleCart(){
+document.getElementById("cart-panel").classList.toggle("open");
 }
 </script>
 
 </body>
-</html>
-
-    
