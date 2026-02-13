@@ -1,280 +1,787 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YARDINA Middle Eastern Kitchen</title>
+<meta charset="UTF-8">
+<title>Yardina404 Restaurant</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
+<style>
+    :root {
+        --bg: #050505;
+        --bg-alt: #111;
+        --card: #181818;
+        --accent: #d4af37; /* gold */
+        --accent-soft: #8f7a2b;
+        --text: #ffffff;
+        --muted: #cccccc;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #ffffff;
-      color: #333;
-      transition: background 0.3s, color 0.3s;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: radial-gradient(circle at top, #222 0, #000 55%);
+        color: var(--text);
     }
 
-    body.dark {
-      background: #1a1a1a;
-      color: #f1f1f1;
-    }
-
-    body.dark header,
-    body.dark nav,
-    body.dark footer {
-      background: #000;
+    a {
+        color: inherit;
+        text-decoration: none;
     }
 
     header {
-      background: linear-gradient(to right, #2c3e50, #1a252f);
-      padding: 40px 20px;
-      text-align: center;
-      color: white;
+        background: rgba(0,0,0,0.9);
+        border-bottom: 1px solid #333;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(10px);
     }
 
-    .logo {
-      font-size: 40px;
-      font-weight: bold;
-      letter-spacing: 3px;
+    .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .logo-badge {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .logo-circle {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        border: 2px solid var(--accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    .logo-text-main {
+        font-weight: bold;
+        letter-spacing: 2px;
+        font-size: 1.1rem;
+    }
+
+    .logo-text-sub {
+        font-size: 0.75rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
 
     nav {
-      background: #34495e;
-      padding: 12px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
     }
 
     nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-size: 0.85rem;
+        background: #181818;
+        border: 1px solid #333;
+        transition: 0.2s;
     }
 
     nav a:hover {
-      color: #f1c40f;
+        border-color: var(--accent);
+        color: var(--accent);
     }
 
-    .dark-toggle {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #e67e22;
-      color: white;
-      padding: 12px 18px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      z-index: 2000;
+    /* HERO */
+    .hero {
+        max-width: 1100px;
+        margin: 20px auto 40px;
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+        gap: 25px;
+        padding: 20px;
     }
 
-    section {
-      padding: 50px 20px;
-      text-align: center;
+    .hero-text h1 {
+        font-size: 2.4rem;
+        margin: 0 0 10px;
     }
 
-    .slider {
-      width: 90%;
-      max-width: 900px;
-      margin: auto;
-      overflow: hidden;
-      border-radius: 12px;
+    .hero-text h1 span {
+        color: var(--accent);
     }
 
-    .slides {
-      display: flex;
-      width: 300%;
-      animation: slide 12s infinite;
+    .hero-text p {
+        color: var(--muted);
+        margin: 0 0 18px;
+        max-width: 420px;
     }
 
-    .slides img {
-      width: 100%;
-      height: 350px;
-      object-fit: cover;
+    .hero-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 18px;
     }
 
-    @keyframes slide {
-      0% { transform: translateX(0%); }
-      33% { transform: translateX(-100%); }
-      66% { transform: translateX(-200%); }
-      100% { transform: translateX(0%); }
+    .hero-tag {
+        font-size: 0.75rem;
+        padding: 4px 10px;
+        border-radius: 999px;
+        border: 1px solid #333;
+        background: rgba(0,0,0,0.7);
+    }
+
+    .hero-cta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .btn-primary {
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: none;
+        background: var(--accent);
+        color: #000;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: 0.2s;
+    }
+
+    .btn-primary:hover {
+        background: #f5d76b;
+    }
+
+    .btn-outline {
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid var(--accent-soft);
+        background: transparent;
+        color: var(--accent);
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: 0.2s;
+    }
+
+    .btn-outline:hover {
+        background: rgba(212,175,55,0.1);
+    }
+
+    .hero-hours {
+        font-size: 0.8rem;
+        color: var(--muted);
+    }
+
+    .hero-image {
+        position: relative;
+        border-radius: 18px;
+        overflow: hidden;
+        border: 1px solid #333;
+        background: #000;
+    }
+
+    .hero-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: saturate(1.1);
+    }
+
+    .hero-badge {
+        position: absolute;
+        bottom: 12px;
+        left: 12px;
+        background: rgba(0,0,0,0.75);
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        border: 1px solid rgba(212,175,55,0.6);
+    }
+
+    /* SECTIONS */
+    .section {
+        max-width: 1100px;
+        margin: 0 auto 40px;
+        padding: 0 20px;
+    }
+
+    .section h2 {
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+    }
+
+    .section-sub {
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin-bottom: 20px;
+    }
+
+    /* ORDER STRIP */
+    .order-strip {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        background: rgba(0,0,0,0.7);
+        border-radius: 14px;
+        padding: 14px 16px;
+        border: 1px solid #333;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .order-strip-text {
+        font-size: 0.9rem;
+        color: var(--muted);
+    }
+
+    .order-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .btn-chip {
+        padding: 6px 12px;
+        border-radius: 999px;
+        border: 1px solid #333;
+        background: #181818;
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .btn-chip.primary {
+        border-color: var(--accent);
+        color: var(--accent);
+    }
+
+    .btn-chip:hover {
+        border-color: var(--accent);
+    }
+
+    /* MENU GRID (reuse from earlier, themed) */
+    .category {
+        margin-bottom: 30px;
+    }
+
+    .category h3 {
+        font-size: 1.3rem;
+        margin-bottom: 8px;
     }
 
     .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-      padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 20px;
     }
 
-    .menu-card {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      padding: 20px;
-      transition: transform 0.3s;
+    .item {
+        background: var(--card);
+        padding: 12px;
+        border-radius: 12px;
+        text-align: center;
+        border: 1px solid #222;
+        transition: 0.2s;
     }
 
-    body.dark .menu-card {
-      background: #2a2a2a;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+    .item:hover {
+        transform: translateY(-2px);
+        border-color: var(--accent-soft);
     }
 
-    .menu-card:hover {
-      transform: scale(1.05);
+    .item img {
+        width: 100%;
+        border-radius: 10px;
+        cursor: pointer;
     }
 
-    .menu-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 10px;
+    .item h4 {
+        margin: 8px 0 4px;
+        font-size: 1rem;
     }
 
-    .order-btn {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 12px 25px;
-      background: #e67e22;
-      color: white;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
+    .price {
+        color: var(--accent);
+        font-weight: bold;
+        margin-bottom: 6px;
+        font-size: 0.9rem;
     }
 
-    .order-btn:hover {
-      background: #d35400;
+    .desc {
+        color: var(--muted);
+        font-size: 0.8rem;
     }
 
-    iframe {
-      width: 90%;
-      max-width: 900px;
-      height: 350px;
-      border: none;
-      border-radius: 12px;
+    /* ABOUT / INFO GRID */
+    .info-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+        gap: 20px;
     }
 
+    .info-card {
+        background: rgba(0,0,0,0.7);
+        border-radius: 14px;
+        padding: 16px;
+        border: 1px solid #333;
+        font-size: 0.9rem;
+        color: var(--muted);
+    }
+
+    .info-card h3 {
+        margin-top: 0;
+        margin-bottom: 8px;
+        color: var(--accent);
+        font-size: 1rem;
+    }
+
+    .info-list {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+        font-size: 0.85rem;
+    }
+
+    .info-list li {
+        margin-bottom: 4px;
+    }
+
+    /* LIGHTBOX */
+    #lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.9);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+    #lightbox img {
+        max-width: 90%;
+        max-height: 90%;
+        border-radius: 12px;
+    }
+
+    /* FOOTER */
     footer {
-      background: #2c3e50;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      margin-top: 40px;
+        background: #050505;
+        border-top: 1px solid #222;
+        padding: 18px 20px 30px;
+        margin-top: 30px;
     }
 
-    @media (max-width: 600px) {
-      header h1 { font-size: 26px; }
-      nav a { margin: 0 8px; font-size: 14px; }
-      .slides img { height: 220px; }
+    .footer-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        font-size: 0.8rem;
+        color: var(--muted);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: space-between;
     }
-  </style>
+
+    .footer-col {
+        max-width: 260px;
+    }
+
+    .footer-title {
+        font-size: 0.9rem;
+        color: var(--accent);
+        margin-bottom: 6px;
+    }
+
+    .footer-bottom {
+        margin-top: 10px;
+        font-size: 0.75rem;
+        opacity: 0.7;
+    }
+
+    @media (max-width: 800px) {
+        .hero {
+            grid-template-columns: 1fr;
+        }
+        .info-grid {
+            grid-template-columns: 1fr;
+        }
+        .topbar {
+            flex-direction: column;
+            gap: 8px;
+        }
+        nav {
+            justify-content: center;
+        }
+    }
+</style>
 </head>
 
 <body>
 
 <header>
-  <div class="logo">YARDINA</div>
-  <p>Middle Eastern Vegetarian Kitchen</p>
+    <div class="topbar">
+        <div class="logo-badge">
+            <div class="logo-circle">
+                YARDINA<br>404
+            </div>
+            <div>
+                <div class="logo-text-main">YARDINA404</div>
+                <div class="logo-text-sub">Falafel • Shawarma • Grill</div>
+            </div>
+        </div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#order">Order</a>
+            <a href="#menu">Menu</a>
+            <a href="#about">About</a>
+            <a href="#visit">Visit</a>
+        </nav>
+    </div>
 </header>
 
-<nav>
-  <a href="#about">About</a>
-  <a href="#menu">Menu</a>
-  <a href="#order">Order</a>
-  <a href="#contact">Contact</a>
-</nav>
+<!-- HERO / HOME -->
+<section class="hero" id="home">
+    <div class="hero-text">
+        <h1>Fresh <span>Mediterranean</span> Flavor, Every Day.</h1>
+        <p>Falafel, shawarma, kababs, and more—crafted with care, bold spices, and warm hospitality.</p>
 
-<div class="dark-toggle" onclick="toggleDark()">Dark Mode</div>
+        <div class="hero-tags">
+            <div class="hero-tag">Falafel • Shawarma • Kabab</div>
+            <div class="hero-tag">Vegetarian Friendly</div>
+            <div class="hero-tag">Dine‑in • Takeout</div>
+        </div>
+
+        <div class="hero-cta">
+            <button class="btn-primary" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">
+                Order Now
+            </button>
+            <button class="btn-outline" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">
+                View Full Menu
+            </button>
+        </div>
+
+        <div class="hero-hours">
+            Open daily • 11:00 AM – 10:00 PM<br>
+            123 Main Street, Newmarket, ON
+        </div>
+    </div>
+
+    <div class="hero-image">
+        <img src="images/Falafel platter 3.jpg" alt="Falafel platter">
+        <div class="hero-badge">Signature Falafel Platter • Customer Favorite</div>
+    </div>
+</section>
+
+<!-- ORDER STRIP -->
+<section class="section" id="order">
+    <div class="order-strip">
+        <div class="order-strip-text">
+            Choose how you’d like to enjoy Yardina404.
+        </div>
+        <div class="order-buttons">
+            <button class="btn-chip primary">Pickup</button>
+            <button class="btn-chip">Dine‑in</button>
+            <button class="btn-chip">Catering</button>
+        </div>
+    </div>
+</section>
+
+<!-- MENU -->
+<section class="section" id="menu">
+    <h2>Menu</h2>
+    <div class="section-sub">Explore our Mediterranean favorites, from crispy falafel to hearty platters and oven‑baked pizzas.</div>
+
+    <!-- Falafel -->
+    <div class="category">
+        <h3>Falafel</h3>
+        <div class="menu-grid">
+
+            <div class="item">
+                <img src="images/Flafel Sandwich.jpg" alt="Falafel Sandwich">
+                <h4>Falafel Sandwich</h4>
+                <div class="price">$6.99</div>
+                <div class="desc">Crispy falafel wrapped with tahini, fresh veggies, and warm pita.</div>
+            </div>
+
+            <div class="item">
+                <img src="images/falafel sandwitch.jpg" alt="Falafel Sandwich">
+                <h4>Falafel Sandwich (Classic)</h4>
+                <div class="price">$6.99</div>
+                <div class="desc">Our classic falafel sandwich with house‑made sauce.</div>
+            </div>
+
+            <div class="item">
+                <img src="images/Falafel meal.jpg" alt="Falafel Meal">
+                <h4>Falafel Meal</h4>
+                <div class="price">$11.99</div>
+                <div class="desc">Falafel served with rice, salad, hummus, and pita.</div>
+            </div>
+
+            <div class="item">
+                <img src="images/Falafel combo.jpg" alt="Falafel Combo">
+                <h4>Falafel Combo</h4>
+                <div class="price">$13.99</div>
+                <div class="desc">Falafel plate with fries and a drink.</div>
+            </div>
+
+            <div class="item">
+                <img src="images/Falafel box.jpg" alt="Falafel Box">
+                <h4>Falafel Box</h4>
+                <div class="price">$9.99</div>
+                <div class="desc">A quick falafel box with salad and tahini.</div>
+            </div>
+
+            <div class="item">
+                <img src="images/Falafel platter 2.jpg" alt="Falafel Platter 2">
+                <h4>Falafel Platter 2</h4>
+                <div class="price">$12.99</div>
+                <div class="desc">A hearty falafel platter with classic sides.</div>
+            </div>
+
+            <div class="item">
+                <img src="images/Falafel platter 3.jpg" alt="Falafel Platter 3">
+                <h4>Falafel Platter 3</h4>
+                <div class="price">$13.49</div>
+                <div class="desc">Falafel with extra toppings and sauces.</div>
+            </div>
+
+            <div class="item">
+                <img src="images/Flafel platter 4.jpg" alt="Falafel Platter 4">
+                <h4>Falafel Platter 4</h4>
+                <div class="price">$14.49</div>
+                <div class="desc">Premium falafel platter with hummus and rice.</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Shawarma -->
+    <div class="category">
+        <h3>Shawarma</h3>
+        <div class="menu-grid">
+
+            <div class="item">
+                <img src="images/Shawarma Sandwitch.jpg" alt="Shawarma Sandwich">
+                <h4>Shawarma Sandwich</h4>
+                <div class="price">$8.99</div>
+                <div class="desc">Juicy chicken shawarma wrapped with garlic sauce and pickles.</div>
+            </div>
+
+            <div class="item">
+                <img src="images/Shawarma platter.jpg" alt="Shawarma Platter">
+                <h4>Shawarma Platter</h4>
+                <div class="price">$14.99</div>
+                <div class="desc">Shawarma served with rice, salad, and garlic dip.</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Platters -->
+    <div class="category">
+        <h3>Platters</h3>
+        <div class="menu-grid">
+
+            <div class="item">
+                <img src="images/Sheesh kabab plater.png" alt="Sheesh Kabab Platter">
+                <h4>Sheesh Kabab Platter</h4>
+                <div class="price">$15.99</div>
+                <div class="desc">Grilled kababs served with rice and salad.</div>
+            </div>
+
+            <div class="item">
+                <img src="images/kabab platter.png" alt="Kabab Platter">
+                <h4>Kabab Platter</h4>
+                <div class="price">$14.99</div>
+                <div class="desc">Tender kababs with rice, hummus, and pita.</div>
+            </div>
+
+            <div class="item">
+                <img src="images/veggie platter.jpg" alt="Veggie Platter">
+                <h4>Veggie Platter</h4>
+                <div class="price">$12.99</div>
+                <div class="desc">A vegetarian feast with falafel, hummus, and salad.</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Sides -->
+    <div class="category">
+        <h3>Sides</h3>
+        <div class="menu-grid">
+
+            <div class="item">
+                <img src="images/Fries.jpg" alt="Fries">
+                <h4>Fries</h4>
+                <div class="price">$3.99</div>
+                <div class="desc">Golden crispy fries.</div>
+            </div>
+
+            <div class="item">
+                <img src="images/Samosa.jpg" alt="Samosa">
+                <h4>Samosa</h4>
+                <div class="price">$2.49</div>
+                <div class="desc">Crispy pastry stuffed with spiced potatoes.</div>
+            </div>
+
+            <div class="item">
+                <img src="images/spring rolls.jpg" alt="Spring Rolls">
+                <h4>Spring Rolls</h4>
+                <div class="price">$4.99</div>
+                <div class="desc">Crispy rolls filled with veggies.</div>
+            </div>
+
+            <div class="item">
+                <img src="images/spring rolls2.jpg" alt="Spring Rolls 2">
+                <h4>Spring Rolls (2)</h4>
+                <div class="price">$6.99</div>
+                <div class="desc">Double portion of crispy rolls.</div>
+            </div>
+
+            <div class="item">
+                <img src="images/rice.jpg" alt="Rice">
+                <h4>Rice</h4>
+                <div class="price">$3.49</div>
+                <div class="desc">Fluffy seasoned rice.</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Pasta -->
+    <div class="category">
+        <h3>Pasta</h3>
+        <div class="menu-grid">
+
+            <div class="item">
+                <img src="images/Pasta.jpg" alt="Pasta">
+                <h4>Pasta</h4>
+                <div class="price">$10.99</div>
+                <div class="desc">Creamy Mediterranean‑style pasta.</div>
+            </div>
+
+            <div class="item">
+                <img src="images/pasta2.jpg" alt="Pasta 2">
+                <h4>Pasta 2</h4>
+                <div class="price">$11.49</div>
+                <div class="desc">Rich tomato‑based pasta.</div>
+            </div>
+
+            <div class="item">
+                <img src="images/pasta3.jpg" alt="Pasta 3">
+                <h4>Pasta 3</h4>
+                <div class="price">$12.49</div>
+                <div class="desc">Pasta with herbs and grilled veggies.</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Pizza -->
+    <div class="category">
+        <h3>Pizza</h3>
+        <div class="menu-grid">
+
+            <div class="item">
+                <img src="images/Pizza.jpg" alt="Pizza">
+                <h4>Pizza</h4>
+                <div class="price">$12.99</div>
+                <div class="desc">Classic Mediterranean‑style pizza.</div>
+            </div>
+
+            <div class="item">
+                <img src="images/pizza2.jpg" alt="Pizza 2">
+                <h4>Pizza 2</h4>
+                <div class="price">$13.99</div>
+                <div class="desc">Loaded pizza with extra toppings.</div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT / VISIT -->
+<section class="section" id="about">
+    <h2>About Yardina404</h2>
+    <div class="section-sub">A neighborhood spot for bold Mediterranean flavors, warm service, and generous plates.</div>
+
+    <div class="info-grid">
+        <div class="info-card">
+            <h3>Our Story</h3>
+            <p>Yardina404 brings together classic Mediterranean recipes, fresh ingredients, and a love for sharing food. From crispy falafel to slow‑marinated shawarma, every dish is made to feel like a meal at a friend’s table.</p>
+        </div>
+        <div class="info-card" id="visit">
+            <h3>Visit Us</h3>
+            <ul class="info-list">
+                <li><strong>Address:</strong> 123 Main Street, Newmarket, ON</li>
+                <li><strong>Phone:</strong> (555) 123‑4567</li>
+                <li><strong>Hours:</strong> Daily, 11:00 AM – 10:00 PM</li>
+                <li><strong>Parking:</strong> Free lot behind the restaurant</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox"><img id="lightbox-img" alt=""></div>
 
 <script>
-  function toggleDark() {
-    document.body.classList.toggle('dark');
-  }
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+
+    document.querySelectorAll(".item img, .hero-image img").forEach(img => {
+        img.addEventListener("click", () => {
+            lightbox.style.display = "flex";
+            lightboxImg.src = img.src;
+        });
+    });
+
+    lightbox.addEventListener("click", () => {
+        lightbox.style.display = "none";
+    });
 </script>
 
-<section>
-  <div class="slider">
-    <div class="slides">
-      <img src="https://i.imgur.com/4ZQZ4Zy.jpg" alt="Falafel">
-      <img src="https://i.imgur.com/8yq7k3G.jpg" alt="Wrap">
-      <img src="https://i.imgur.com/9gJ7w2B.jpg" alt="Mezze">
-    </div>
-  </div>
-</section>
-
-<section id="about">
-  <h2>About YARDINA</h2>
-  <p>
-    YARDINA is a modern Middle Eastern vegetarian kitchen serving fresh, authentic,
-    and flavorful dishes inspired by traditional recipes. From crispy falafel to
-    shawarma‑style wraps and handcrafted mezze, every item is prepared with premium
-    ingredients and a passion for real Middle Eastern taste.
-  </p>
-</section>
-
-<section id="menu">
-  <h2>Our Menu</h2>
-
-  <div class="menu-grid">
-    <div class="menu-card">
-      <img src="https://i.imgur.com/4ZQZ4Zy.jpg" alt="Falafel Wrap">
-      <h3>Falafel Wrap</h3>
-      <p>Crispy falafel, tahini, tomatoes, pickles, parsley.</p>
-    </div>
-
-    <div class="menu-card">
-      <img src="https://i.imgur.com/8yq7k3G.jpg" alt="Veggie Shawarma Wrap">
-      <h3>Veggie Shawarma Wrap</h3>
-      <p>Seasoned vegetables, garlic sauce, pickles, lettuce.</p>
-    </div>
-
-    <div class="menu-card">
-      <img src="https://i.imgur.com/2gYtq5L.jpg" alt="Kofta Veggie Plate">
-      <h3>Kofta Veggie Plate</h3>
-      <p>Plant‑based kofta, rice, salad, tahini.</p>
-    </div>
-
-    <div class="menu-card">
-      <img src="https://i.imgur.com/9gJ7w2B.jpg" alt="Mezze Platter">
-      <h3>Mezze Platter</h3>
-      <p>Hummus, baba ganoush, falafel, pickles, pita.</p>
-    </div>
-  </div>
-</section>
-
-<section id="order">
-  <h2>Order Online</h2>
-  <p>Order your favorites for pickup or delivery.</p>
-  <a class="order-btn" href="https://www.ubereats.com" target="_blank">Order on Uber Eats</a>
-  <a class="order-btn" href="https://www.doordash.com" target="_blank">Order on DoorDash</a>
-  <a class="order-btn" href="https://www.skipthedishes.com" target="_blank">Order on SkipTheDishes</a>
-</section>
-
-<section id="contact">
-  <h2>Visit Us</h2>
-  <p><strong>YARDINA Middle Eastern Kitchen</strong></p>
-  <p>Units 5 & 6<br>2900 Steeles Ave East<br>Thornhill, Ontario</p>
-
-  <h3>Contact</h3>
-  <p>Phone: 416‑817‑1625<br>Email: yardina404@outlook.com</p>
-
-  <h3>Hours</h3>
-  <p>Mon–Fri: 11 AM – 9 PM<br>Sat–Sun: 12 PM – 10 PM</p>
-
-  <h3>Find Us on the Map</h3>
-  <iframe
-    src="https://www.google.com/maps?q=2900+Steeles+Ave+East+Thornhill+Ontario&output=embed"
-    loading="lazy">
-  </iframe>
-</section>
-
 <footer>
-  <p>© 2024 YARDINA Middle Eastern Kitchen — All Rights Reserved</p>
+    <div class="footer-inner">
+        <div class="footer-col">
+            <div class="footer-title">Yardina404</div>
+            <div>Falafel • Shawarma • Grill</div>
+        </div>
+        <div class="footer-col">
+            <div class="footer-title">Contact</div>
+            <div>123 Main Street, Newmarket, ON</div>
+            <div>(555) 123‑4567</div>
+            <div>Open daily • 11:00 AM – 10:00 PM</div>
+        </div>
+        <div class="footer-col">
+            <div class="footer-title">Connect</div>
+            <div>@yardina404 on social</div>
+            <div>info@yardina404.com</div>
+        </div>
+    </div>
+    <div class="footer-inner footer-bottom">
+        <div>© Yardina404 Restaurant. All rights reserved.</div>
+        <div>Site concept generated for your project.</div>
+    </div>
 </footer>
 
 </body>
