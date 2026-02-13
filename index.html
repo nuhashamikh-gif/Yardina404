@@ -10,15 +10,13 @@
         --bg: #050505;
         --bg-alt: #111;
         --card: #181818;
-        --accent: #d4af37; /* gold */
+        --accent: #d4af37;
         --accent-soft: #8f7a2b;
         --text: #ffffff;
         --muted: #cccccc;
     }
 
-    * {
-        box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
         margin: 0;
@@ -27,10 +25,7 @@
         color: var(--text);
     }
 
-    a {
-        color: inherit;
-        text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
     header {
         background: rgba(0,0,0,0.9);
@@ -103,7 +98,6 @@
         color: var(--accent);
     }
 
-    /* HERO */
     .hero {
         max-width: 1100px;
         margin: 20px auto 40px;
@@ -118,9 +112,7 @@
         margin: 0 0 10px;
     }
 
-    .hero-text h1 span {
-        color: var(--accent);
-    }
+    .hero-text h1 span { color: var(--accent); }
 
     .hero-text p {
         color: var(--muted);
@@ -162,9 +154,7 @@
         transition: 0.2s;
     }
 
-    .btn-primary:hover {
-        background: #f5d76b;
-    }
+    .btn-primary:hover { background: #f5d76b; }
 
     .btn-outline {
         padding: 10px 18px;
@@ -177,9 +167,7 @@
         transition: 0.2s;
     }
 
-    .btn-outline:hover {
-        background: rgba(212,175,55,0.1);
-    }
+    .btn-outline:hover { background: rgba(212,175,55,0.1); }
 
     .hero-hours {
         font-size: 0.8rem;
@@ -213,7 +201,6 @@
         border: 1px solid rgba(212,175,55,0.6);
     }
 
-    /* SECTIONS */
     .section {
         max-width: 1100px;
         margin: 0 auto 40px;
@@ -231,7 +218,6 @@
         margin-bottom: 20px;
     }
 
-    /* ORDER STRIP */
     .order-strip {
         display: flex;
         flex-wrap: wrap;
@@ -270,14 +256,9 @@
         color: var(--accent);
     }
 
-    .btn-chip:hover {
-        border-color: var(--accent);
-    }
+    .btn-chip:hover { border-color: var(--accent); }
 
-    /* MENU GRID (reuse from earlier, themed) */
-    .category {
-        margin-bottom: 30px;
-    }
+    .category { margin-bottom: 30px; }
 
     .category h3 {
         font-size: 1.3rem;
@@ -327,7 +308,6 @@
         font-size: 0.8rem;
     }
 
-    /* ABOUT / INFO GRID */
     .info-grid {
         display: grid;
         grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
@@ -357,11 +337,8 @@
         font-size: 0.85rem;
     }
 
-    .info-list li {
-        margin-bottom: 4px;
-    }
+    .info-list li { margin-bottom: 4px; }
 
-    /* LIGHTBOX */
     #lightbox {
         position: fixed;
         top: 0;
@@ -381,7 +358,6 @@
         border-radius: 12px;
     }
 
-    /* FOOTER */
     footer {
         background: #050505;
         border-top: 1px solid #222;
@@ -400,9 +376,7 @@
         justify-content: space-between;
     }
 
-    .footer-col {
-        max-width: 260px;
-    }
+    .footer-col { max-width: 260px; }
 
     .footer-title {
         font-size: 0.9rem;
@@ -417,19 +391,10 @@
     }
 
     @media (max-width: 800px) {
-        .hero {
-            grid-template-columns: 1fr;
-        }
-        .info-grid {
-            grid-template-columns: 1fr;
-        }
-        .topbar {
-            flex-direction: column;
-            gap: 8px;
-        }
-        nav {
-            justify-content: center;
-        }
+        .hero { grid-template-columns: 1fr; }
+        .info-grid { grid-template-columns: 1fr; }
+        .topbar { flex-direction: column; gap: 8px; }
+        nav { justify-content: center; }
     }
 </style>
 </head>
@@ -439,9 +404,7 @@
 <header>
     <div class="topbar">
         <div class="logo-badge">
-            <div class="logo-circle">
-                YARDINA<br>404
-            </div>
+            <div class="logo-circle">YARDINA<br>404</div>
             <div>
                 <div class="logo-text-main">YARDINA404</div>
                 <div class="logo-text-sub">Falafel • Shawarma • Grill</div>
@@ -457,7 +420,6 @@
     </div>
 </header>
 
-<!-- HERO / HOME -->
 <section class="hero" id="home">
     <div class="hero-text">
         <h1>Fresh <span>Mediterranean</span> Flavor, Every Day.</h1>
@@ -470,12 +432,8 @@
         </div>
 
         <div class="hero-cta">
-            <button class="btn-primary" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">
-                Order Now
-            </button>
-            <button class="btn-outline" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">
-                View Full Menu
-            </button>
+            <button class="btn-primary" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">Order Now</button>
+            <button class="btn-outline" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">View Full Menu</button>
         </div>
 
         <div class="hero-hours">
@@ -490,12 +448,9 @@
     </div>
 </section>
 
-<!-- ORDER STRIP -->
 <section class="section" id="order">
     <div class="order-strip">
-        <div class="order-strip-text">
-            Choose how you’d like to enjoy Yardina404.
-        </div>
+        <div class="order-strip-text">Choose how you’d like to enjoy Yardina404.</div>
         <div class="order-buttons">
             <button class="btn-chip primary">Pickup</button>
             <button class="btn-chip">Dine‑in</button>
@@ -504,67 +459,65 @@
     </div>
 </section>
 
-<!-- MENU -->
 <section class="section" id="menu">
     <h2>Menu</h2>
     <div class="section-sub">Explore our Mediterranean favorites, from crispy falafel to hearty platters and oven‑baked pizzas.</div>
 
-    <!-- Falafel -->
     <div class="category">
         <h3>Falafel</h3>
         <div class="menu-grid">
 
             <div class="item">
-                <img src="images/Flafel Sandwich.jpg" alt="Falafel Sandwich">
+                <img src="images/Flafel Sandwich.jpg">
                 <h4>Falafel Sandwich</h4>
                 <div class="price">$6.99</div>
                 <div class="desc">Crispy falafel wrapped with tahini, fresh veggies, and warm pita.</div>
             </div>
 
             <div class="item">
-                <img src="images/falafel sandwitch.jpg" alt="Falafel Sandwich">
+                <img src="images/falafel sandwitch.jpg">
                 <h4>Falafel Sandwich (Classic)</h4>
                 <div class="price">$6.99</div>
                 <div class="desc">Our classic falafel sandwich with house‑made sauce.</div>
             </div>
 
             <div class="item">
-                <img src="images/Falafel meal.jpg" alt="Falafel Meal">
+                <img src="images/Falafel meal.jpg">
                 <h4>Falafel Meal</h4>
                 <div class="price">$11.99</div>
                 <div class="desc">Falafel served with rice, salad, hummus, and pita.</div>
             </div>
 
             <div class="item">
-                <img src="images/Falafel combo.jpg" alt="Falafel Combo">
+                <img src="images/Falafel combo.jpg">
                 <h4>Falafel Combo</h4>
                 <div class="price">$13.99</div>
                 <div class="desc">Falafel plate with fries and a drink.</div>
             </div>
 
             <div class="item">
-                <img src="images/Falafel box.jpg" alt="Falafel Box">
+                <img src="images/Falafel box.jpg">
                 <h4>Falafel Box</h4>
                 <div class="price">$9.99</div>
                 <div class="desc">A quick falafel box with salad and tahini.</div>
             </div>
 
             <div class="item">
-                <img src="images/Falafel platter 2.jpg" alt="Falafel Platter 2">
+                <img src="images/Falafel platter 2.jpg">
                 <h4>Falafel Platter 2</h4>
                 <div class="price">$12.99</div>
                 <div class="desc">A hearty falafel platter with classic sides.</div>
             </div>
 
             <div class="item">
-                <img src="images/Falafel platter 3.jpg" alt="Falafel Platter 3">
+                <img src="images/Falafel platter 3.jpg">
                 <h4>Falafel Platter 3</h4>
                 <div class="price">$13.49</div>
                 <div class="desc">Falafel with extra toppings and sauces.</div>
             </div>
 
             <div class="item">
-                <img src="images/Flafel platter 4.jpg" alt="Falafel Platter 4">
+                <img src="images/Flafel platter 4.jpg">
                 <h4>Falafel Platter 4</h4>
                 <div class="price">$14.49</div>
                 <div class="desc">Premium falafel platter with hummus and rice.</div>
@@ -573,20 +526,19 @@
         </div>
     </div>
 
-    <!-- Shawarma -->
     <div class="category">
         <h3>Shawarma</h3>
         <div class="menu-grid">
 
             <div class="item">
-                <img src="images/Shawarma Sandwitch.jpg" alt="Shawarma Sandwich">
+                <img src="images/Shawarma Sandwitch.jpg">
                 <h4>Shawarma Sandwich</h4>
                 <div class="price">$8.99</div>
                 <div class="desc">Juicy chicken shawarma wrapped with garlic sauce and pickles.</div>
             </div>
 
             <div class="item">
-                <img src="images/Shawarma platter.jpg" alt="Shawarma Platter">
+                <img src="images/Shawarma platter.jpg">
                 <h4>Shawarma Platter</h4>
                 <div class="price">$14.99</div>
                 <div class="desc">Shawarma served with rice, salad, and garlic dip.</div>
@@ -595,194 +547,25 @@
         </div>
     </div>
 
-    <!-- Platters -->
     <div class="category">
         <h3>Platters</h3>
         <div class="menu-grid">
 
             <div class="item">
-                <img src="images/Sheesh kabab plater.png" alt="Sheesh Kabab Platter">
+                <img src="images/Sheesh kabab plater.png">
                 <h4>Sheesh Kabab Platter</h4>
                 <div class="price">$15.99</div>
                 <div class="desc">Grilled kababs served with rice and salad.</div>
             </div>
 
             <div class="item">
-                <img src="images/kabab platter.png" alt="Kabab Platter">
+                <img src="images/kabab platter.png">
                 <h4>Kabab Platter</h4>
                 <div class="price">$14.99</div>
                 <div class="desc">Tender kababs with rice, hummus, and pita.</div>
             </div>
 
             <div class="item">
-                <img src="images/veggie platter.jpg" alt="Veggie Platter">
-                <h4>Veggie Platter</h4>
-                <div class="price">$12.99</div>
-                <div class="desc">A vegetarian feast with falafel, hummus, and salad.</div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- Sides -->
-    <div class="category">
-        <h3>Sides</h3>
-        <div class="menu-grid">
-
-            <div class="item">
-                <img src="images/Fries.jpg" alt="Fries">
-                <h4>Fries</h4>
-                <div class="price">$3.99</div>
-                <div class="desc">Golden crispy fries.</div>
-            </div>
-
-            <div class="item">
-                <img src="images/Samosa.jpg" alt="Samosa">
-                <h4>Samosa</h4>
-                <div class="price">$2.49</div>
-                <div class="desc">Crispy pastry stuffed with spiced potatoes.</div>
-            </div>
-
-            <div class="item">
-                <img src="images/spring rolls.jpg" alt="Spring Rolls">
-                <h4>Spring Rolls</h4>
-                <div class="price">$4.99</div>
-                <div class="desc">Crispy rolls filled with veggies.</div>
-            </div>
-
-            <div class="item">
-                <img src="images/spring rolls2.jpg" alt="Spring Rolls 2">
-                <h4>Spring Rolls (2)</h4>
-                <div class="price">$6.99</div>
-                <div class="desc">Double portion of crispy rolls.</div>
-            </div>
-
-            <div class="item">
-                <img src="images/rice.jpg" alt="Rice">
-                <h4>Rice</h4>
-                <div class="price">$3.49</div>
-                <div class="desc">Fluffy seasoned rice.</div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- Pasta -->
-    <div class="category">
-        <h3>Pasta</h3>
-        <div class="menu-grid">
-
-            <div class="item">
-                <img src="images/Pasta.jpg" alt="Pasta">
-                <h4>Pasta</h4>
-                <div class="price">$10.99</div>
-                <div class="desc">Creamy Mediterranean‑style pasta.</div>
-            </div>
-
-            <div class="item">
-                <img src="images/pasta2.jpg" alt="Pasta 2">
-                <h4>Pasta 2</h4>
-                <div class="price">$11.49</div>
-                <div class="desc">Rich tomato‑based pasta.</div>
-            </div>
-
-            <div class="item">
-                <img src="images/pasta3.jpg" alt="Pasta 3">
-                <h4>Pasta 3</h4>
-                <div class="price">$12.49</div>
-                <div class="desc">Pasta with herbs and grilled veggies.</div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- Pizza -->
-    <div class="category">
-        <h3>Pizza</h3>
-        <div class="menu-grid">
-
-            <div class="item">
-                <img src="images/Pizza.jpg" alt="Pizza">
-                <h4>Pizza</h4>
-                <div class="price">$12.99</div>
-                <div class="desc">Classic Mediterranean‑style pizza.</div>
-            </div>
-
-            <div class="item">
-                <img src="images/pizza2.jpg" alt="Pizza 2">
-                <h4>Pizza 2</h4>
-                <div class="price">$13.99</div>
-                <div class="desc">Loaded pizza with extra toppings.</div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- ABOUT / VISIT -->
-<section class="section" id="about">
-    <h2>About Yardina404</h2>
-    <div class="section-sub">A neighborhood spot for bold Mediterranean flavors, warm service, and generous plates.</div>
-
-    <div class="info-grid">
-        <div class="info-card">
-            <h3>Our Story</h3>
-            <p>Yardina404 brings together classic Mediterranean recipes, fresh ingredients, and a love for sharing food. From crispy falafel to slow‑marinated shawarma, every dish is made to feel like a meal at a friend’s table.</p>
-        </div>
-        <div class="info-card" id="visit">
-            <h3>Visit Us</h3>
-            <ul class="info-list">
-                <li><strong>Address:</strong> 123 Main Street, Newmarket, ON</li>
-                <li><strong>Phone:</strong> (555) 123‑4567</li>
-                <li><strong>Hours:</strong> Daily, 11:00 AM – 10:00 PM</li>
-                <li><strong>Parking:</strong> Free lot behind the restaurant</li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-<!-- LIGHTBOX -->
-<div id="lightbox"><img id="lightbox-img" alt=""></div>
-
-<script>
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = document.getElementById("lightbox-img");
-
-    document.querySelectorAll(".item img, .hero-image img").forEach(img => {
-        img.addEventListener("click", () => {
-            lightbox.style.display = "flex";
-            lightboxImg.src = img.src;
-        });
-    });
-
-    lightbox.addEventListener("click", () => {
-        lightbox.style.display = "none";
-    });
-</script>
-
-<footer>
-    <div class="footer-inner">
-        <div class="footer-col">
-            <div class="footer-title">Yardina404</div>
-            <div>Falafel • Shawarma • Grill</div>
-        </div>
-        <div class="footer-col">
-            <div class="footer-title">Contact</div>
-            <div>123 Main Street, Newmarket, ON</div>
-            <div>(555) 123‑4567</div>
-            <div>Open daily • 11:00 AM – 10:00 PM</div>
-        </div>
-        <div class="footer-col">
-            <div class="footer-title">Connect</div>
-            <div>@yardina404 on social</div>
-            <div>info@yardina404.com</div>
-        </div>
-    </div>
-    <div class="footer-inner footer-bottom">
-        <div>© Yardina404 Restaurant. All rights reserved.</div>
-        <div>Site concept generated for your project.</div>
-    </div>
-</footer>
-
-</body>
-</html>
+                <img src="images/veggie platter.jpg">
+                <h4>Veggie Platter
+ 
