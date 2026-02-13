@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Yardina — Pre‑Order</title>
+
+<style>
+body{
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:#f9f7f3;
+  margin:0;
+  padding:0;
+  color:#222;
+}
+
+/* Pay‑First Banner */
+.pay-banner{
+  background:#f4b41a;
+  padding:12px;
+  text-align:center;
+  font-weight:bold;
+  color:#000;
+}
+
+/* Floating Buttons */
+.floating-buttons{
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  z-index:999;
+}
+.float-btn{
+  padding:12px 16px;
+  background:#2f5d50;
+  color:#fff;
+  border-radius:8px;
+  text-decoration:none;
+  font-size:.9rem;
+  text-align:center;
+}
+.float-btn.whatsapp{background:#25D366;}
+.float-btn.download{background:#128C7E;}
+.float-btn.pay{background:#f4b41a;color:#000;font-weight:bold;}
+
+header{
+  background:#2f5d50;
+  color:#fff;
+  padding:40px 20px;
+  text-align:center;
+}
+header h1{margin:0;font-size:2.4rem;}
+header a{color:#fff;text-decoration:underline;}
+
+section{
+  max-width:700px;
+  margin:40px auto;
+  background:#fff;
+  padding:30px;
+  border-radius:10px;
+  box-shadow:0 2px 8px rgba(0,0,0,.1);
+}
+
+label{
+  display:block;
+  margin-top:15px;
+  font-weight:bold;
+}
+
+input,textarea,select{
+  width:100%;
+  padding:10px;
+  margin-top:5px;
+  border-radius:6px;
+  border:1px solid #ccc;
+  font-size:1rem;
+}
+
+button{
+  margin-top:20px;
+  padding:12px 24px;
+  background:#2f5d50;
+  color:#fff;
+  border:none;
+  border-radius:6px;
+  font-size:1rem;
+  cursor:pointer;
+}
+button:hover{background:#244a38;}
+
+.pay-btn{
+  display:inline-block;
+  margin:15px 0;
+  padding:12px 20px;
+  background:#f4b41a;
+  color:#000;
+  font-weight:bold;
+  border-radius:6px;
+  text-decoration:none;
+}
+
+.notice{
+  background:#fff8d9;
+  border-left:5px solid #f4b41a;
+  padding:15px;
+  margin-bottom:20px;
+  border-radius:6px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="pay-banner">All Pre‑Orders Require Payment First</div>
+
+<!-- Floating Buttons -->
+<div class="floating-buttons">
+  <a class="float-btn whatsapp" href="https://wa.me/14168171625" target="_blank">Chat on WhatsApp</a>
+  <a class="float-btn download" href="https://www.whatsapp.com/download" target="_blank">Download WhatsApp</a>
+  <a class="float-btn pay" href="https://square.link/u/5ckYGFZJ" target="_blank">Pay First</a>
+</div>
+
+<header>
+<h1>Pre‑Order from Yardina</h1>
+<p><a href="index.html">← Back to Home</a></p>
+</header>
+
+<section>
+<h2>Place Your Pre‑Order</h2>
+
+<div class="notice">
+<strong>Important:</strong> All pre‑orders require payment before submitting the form.
+<br><br>
+<a href="https://square.link/u/5ckYGFZJ" class="pay-btn" target="_blank">Pay First</a>
+<br>
+After paying, return here and complete the form below.
+</div>
+
+<!-- Optional Google Form -->
+<p><strong>Prefer Google Forms?</strong>  
+<a href="https://forms.gle/" target="_blank">Click here to submit via Google Form</a></p>
+
+<form action="mailto:yardina404@outlook.com" method="POST" enctype="text/plain">
+
+<label>Your Name</label>
+<input type="text" name="Name" required />
+
+<label>Phone Number</label>
+<input type="text" name="Phone" required />
+
+<label>Email</label>
+<input type="email" name="Email" required />
+
+<label>Pickup Day</label>
+<select name="Pickup Day" required>
+  <option value="">Select a day</option>
+  <option>Friday</option>
+  <option>Saturday</option>
+  <option>Sunday</option>
+</select>
+
+<label>Pickup Time (Optional)</label>
+<input type="text" name="Pickup Time" placeholder="e.g., 3:30 PM" />
+
+<label>Your Order</label>
+<textarea name="Order" rows="5" required></textarea>
+
+<label>Payment Confirmation (Transaction ID or Name Used)</label>
+<input type="text" name="Payment Confirmation" required />
+
+<label>Additional Notes (Optional)</label>
+<textarea name="Notes" rows="3"></textarea>
+
+<button type="submit">Submit Pre‑Order</button>
+</form>
+</section>
+
+</body>
+</html>
