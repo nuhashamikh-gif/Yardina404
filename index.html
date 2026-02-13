@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yardina — Hours, Location & Contact</title>
+  <title>Yardina — Pre‑Order</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -12,32 +12,24 @@
       background: #f7f7f7;
       color: #333;
     }
+
     header {
       background: #2e5c45;
       color: white;
-      padding: 30px 20px;
+      padding: 40px 20px;
       text-align: center;
     }
+
     header h1 {
       margin: 0;
-      font-size: 2.2rem;
-      letter-spacing: 1px;
+      font-size: 2.4rem;
     }
-    header p {
-      margin: 8px 0 0;
-      font-size: 1.1rem;
-      opacity: 0.9;
+
+    header a {
+      color: white;
+      text-decoration: underline;
     }
-    .btn {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 10px 20px;
-      background: white;
-      color: #2e5c45;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+
     section {
       max-width: 700px;
       margin: 40px auto;
@@ -46,19 +38,35 @@
       border-radius: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
-    .block {
-      margin-bottom: 25px;
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
     }
-    .block h3 {
-      margin-bottom: 8px;
-      color: #2e5c45;
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
     }
-    a {
-      color: #2e5c45;
-      text-decoration: none;
+
+    button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: #2e5c45;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
     }
-    a:hover {
-      text-decoration: underline;
+
+    button:hover {
+      background: #244a38;
     }
   </style>
 </head>
@@ -66,27 +74,29 @@
 <body>
 
 <header>
-  <h1>Welcome to Yardina</h1>
-  <p>Your destination for quality service — place your pre‑order today</p>
-  <a class="btn" href="#">Pre‑Order</a>
+  <h1>Pre‑Order from Yardina</h1>
+  <p><a href="index.html">← Back to Home</a></p>
 </header>
 
 <section>
-  <h2>Visit Yardina</h2>
-  <p>Hours, location, and contact.</p>
+  <h2>Place Your Pre‑Order</h2>
+  <p>Fill out the form below and we will contact you to confirm your order.</p>
 
-  <div class="block">
-    <h3>Hours</h3>
-    <p>Fri–Sun: 10:00 am – 6:00 pm</p>
-    <p>Mon–Thu: Closed</p>
-  </div>
+  <form action="mailto:yardina404@outlook.com" method="POST" enctype="text/plain">
+    <label>Your Name</label>
+    <input type="text" name="Name" placeholder="Enter your name" required />
 
-  <div class="block">
-    <h3>Reservations &amp; Contact</h3>
-    <p><strong>Phone:</strong> <a href="tel:+14168171625">416‑817‑1625</a></p>
-    <p><strong>Email:</strong> <a href="mailto:yardina404@outlook.com">yardina404@outlook.com</a></p>
-    <p><strong>Address:</strong> 2900 Steeles Ave East, Unit 5 &amp; 6, Thornhill, Ontario</p>
-  </div>
+    <label>Phone Number</label>
+    <input type="text" name="Phone" placeholder="Enter your phone number" required />
+
+    <label>Email</label>
+    <input type="email" name="Email" placeholder="Enter your email" required />
+
+    <label>Your Order</label>
+    <textarea name="Order" rows="5" placeholder="Describe what you would like to pre‑order" required></textarea>
+
+    <button type="submit">Submit Pre‑Order</button>
+  </form>
 </section>
 
 </body>
