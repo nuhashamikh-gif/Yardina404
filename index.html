@@ -1,259 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yardina Food</title>
-
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
-}
-
-header {
-  background: #b22222;
-  color: white;
-  padding: 25px;
-  text-align: center;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 36px;
-}
-
-nav {
-  background: #222;
-  text-align: center;
-  padding: 12px;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  margin: 0 20px;
-  font-weight: bold;
-}
-
-nav a:hover {
-  color: #ffcc00;
-}
-
-.hero {
-  text-align: center;
-  padding: 60px 20px;
-  background: white;
-}
-
-.hero h2 {
-  font-size: 40px;
-  margin-bottom: 10px;
-}
-
-.section {
-  padding: 50px 20px;
-  text-align: center;
-}
-
-.menu-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
-  max-width: 1100px;
-  margin: auto;
-}
-
-.card {
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.card h3 {
-  margin: 15px 0 5px;
-}
-
-.card p {
-  padding: 0 15px 15px;
-}
-
-.contact {
-  background: #fff;
-  padding: 40px;
-}
-
-footer {
-  background: #111;
-  color: white;
-  text-align: center;
-  padding: 15px;
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yardina404 — Order Online</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #fdfdfd;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    .menu-item {
+      border: 1px solid #ddd;
+      padding: 16px;
+      margin: 12px auto;
+      max-width: 500px;
+      border-radius: 8px;
+    }
+    .menu-item button {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    #orderForm {
+      display: none;
+      max-width: 500px;
+      margin: 20px auto;
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    #orderForm label, #orderForm input {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    #orderForm button {
+      background: #0077cc;
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+  </style>
 </head>
-
 <body>
+  <h1>Welcome to Yardina404</h1>
+  <h2>Menu</h2>
 
-<header>
-  <h1>Yardina Food</h1>
-  <p>Fresh • Authentic • Mediterranean</p>
-</header>
+  <div class="menu-item"><h3>Falafel Platter Small — $12</h3><button onclick="selectItem('Falafel Platter Small',12)">Add to Order</button></div>
+  <div class="menu-item"><h3>Falafel Platter Large — $17</h3><button onclick="selectItem('Falafel Platter Large',17)">Add to Order</button></div>
+  <div class="menu-item"><h3>Shawarma Platter Small — $15</h3><button onclick="selectItem('Shawarma Platter Small',15)">Add to Order</button></div>
+  <div class="menu-item"><h3>Shawarma Platter Large — $20</h3><button onclick="selectItem('Shawarma Platter Large',20)">Add to Order</button></div>
+  <div class="menu-item"><h3>Kabab Platter Small — $15</h3><button onclick="selectItem('Kabab Platter Small',15)">Add to Order</button></div>
+  <div class="menu-item"><h3>Kabab Platter Large — $20</h3><button onclick="selectItem('Kabab Platter Large',20)">Add to Order</button></div>
+  <div class="menu-item"><h3>Falafel Sandwich — $8</h3><button onclick="selectItem('Falafel Sandwich',8)">Add to Order</button></div>
+  <div class="menu-item"><h3>Shawarma Sandwich — $12</h3><button onclick="selectItem('Shawarma Sandwich',12)">Add to Order</button></div>
+  <div class="menu-item"><h3>Pizza Cheese — $7</h3><button onclick="selectItem('Pizza Cheese',7)">Add to Order</button></div>
+  <div class="menu-item"><h3>Zaatar — $8</h3><button onclick="selectItem('Zaatar',8)">Add to Order</button></div>
+  <div class="menu-item"><h3>Zaatar and Cheese — $10</h3><button onclick="selectItem('Zaatar and Cheese',10)">Add to Order</button></div>
+  <div class="menu-item"><h3>Fries Small — $3</h3><button onclick="selectItem('Fries Small',3)">Add to Order</button></div>
+  <div class="menu-item"><h3>Fries Large — $5</h3><button onclick="selectItem('Fries Large',5)">Add to Order</button></div>
 
-<nav>
-  <a href="#about">About</a>
-  <a href="#menu">Menu</a>
-  <a href="#contact">Contact</a>
-</nav>
+  <!-- Order Form -->
+  <form id="orderForm" onsubmit="return goToPayment()">
+    <h2>Your Order</h2>
+    <p id="selectedItemText"></p>
 
-<div class="hero">
-  <h2>Welcome to Yardina Food</h2>
-  <p>Serving fresh falafel, shawarma & homemade Mediterranean flavors.</p>
-</div>
+    <label>
+      Quantity:
+      <input type="number" id="quantity" value="1" min="1" required>
+    </label>
 
-<div class="section" id="about">
-  <h2>About Us</h2>
-  <p>Located at 2900 Steeles Ave East, Thornhill.  
-  We prepare authentic Mediterranean food daily with fresh ingredients and bold flavors.</p>
-</div>
-<div class="section" id="menu">
-  <h2>Our Menu</h2>
+    <label>
+      Your Name:
+      <input type="text" id="customerName" required>
+    </label>
 
-  <!-- LUNCH COMBO SECTION -->
-  <h3 style="margin-top:40px;">🍽 Lunch Combos & Plates</h3>
+    <label>
+      Contact (Email or Phone):
+      <input type="text" id="contactInfo" required>
+    </label>
 
-  <div class="menu-grid">
+    <button type="submit">Pay with Square</button>
+  </form>
 
-    <div class="card">
-      <h3>Chicken Shawarma Platter</h3>
-      <p>Shawarma, rice, salad with hummus & tahini</p>
-      <p><strong>Small $15 | Large $20</strong></p>
-    </div>
+  <script>
+    let currentItem = "";
+    let currentPrice = 0;
 
-    <div class="card">
-      <h3>Falafel Platter</h3>
-      <p>Falafel, rice, salad with hummus & tahini</p>
-      <p><strong>Small $13 | Large $17</strong></p>
-    </div>
+    function selectItem(name, price) {
+      currentItem = name;
+      currentPrice = price;
+      document.getElementById("selectedItemText").innerText = `${name} — $${price}`;
+      document.getElementById("orderForm").style.display = "block";
+      window.scrollTo(0, document.getElementById("orderForm").offsetTop);
+    }
 
-    <div class="card">
-      <h3>Shish Kebab</h3>
-      <p>One skewer with rice & creamy coleslaw</p>
-      <p><strong>Small $15 | Large (2 skewers) $20</strong></p>
-    </div>
+    function goToPayment() {
+      const qty = parseInt(document.getElementById("quantity").value);
+      const total = (currentPrice * qty).toFixed(2);
 
-    <div class="card">
-      <h3>Falafel Pita</h3>
-      <p>Vegetarian lunch or dinner</p>
-      <p><strong>$8.00</strong> | Add small soup +$2</p>
-    </div>
+      const squareLink = "https://square.link/u/5ckYGFZJ";
 
-    <div class="card">
-      <h3>Veggie Burger</h3>
-      <p>Vegetarian lunch or dinner</p>
-      <p><strong>$10.00</strong> | Add small soup +$2</p>
-    </div>
-
-    <div class="card">
-      <h3>Chicken Shawarma Pita</h3>
-      <p><strong>$12.00</strong></p>
-    </div>
-
-    <div class="card">
-      <h3>Spaghetti / Noodles / Rice Noodles</h3>
-      <p><strong>Small $8.00 | Large $10.00</strong></p>
-    </div>
-
-  </div>
-
-  <!-- PIZZA SECTION -->
-  <h3 style="margin-top:60px;">🍕 Pizzas (Fresh Dough – Baked)</h3>
-
-  <div class="menu-grid">
-
-    <div class="card">
-      <h3>Shawarma Pizza</h3>
-      <p>Chicken shawarma, cheese, vegetables</p>
-      <p><strong>$15.00</strong></p>
-    </div>
-
-    <div class="card">
-      <h3>Veggie Pizza</h3>
-      <p>Cheese, onion, olive, pineapple, mushroom, green pepper</p>
-      <p><strong>$10.00</strong></p>
-    </div>
-
-    <div class="card">
-      <h3>Cheese Pizza</h3>
-      <p>Cheese only</p>
-      <p><strong>$7.00</strong></p>
-    </div>
-
-    <div class="card">
-      <h3>Zaatar Pizza</h3>
-      <p>Cheese, zaatar, extra virgin olive oil</p>
-      <p><strong>$10.00</strong></p>
-    </div>
-
-    <div class="card">
-      <h3>Pepperoni Pizza</h3>
-      <p>Cheese, pepperoni</p>
-      <p><strong>$8.00</strong></p>
-    </div>
-
-    <div class="card">
-      <h3>Hawaiian Pizza</h3>
-      <p>Cheese, pepperoni, pineapple</p>
-      <p><strong>$10.00</strong></p>
-    </div>
-
-    <div class="card">
-      <h3>Lahm Bi Ajeen</h3>
-      <p><strong>$8.00</strong></p>
-    </div>
-
-  </div>
-
-</div>
-
-    <div class="card">
-      <img src="images/rice-plate.jpg" alt="Rice Plate">
-      <h3>Rice & Chicken Plate</h3>
-      <p>Grilled chicken served over seasoned rice.</p>
-    </div>
-
-    <div class="card">
-      <img src="images/salad.jpg" alt="Salad">
-      <h3>Fresh Salads</h3>
-      <p>Healthy Mediterranean salads made fresh daily.</p>
-    </div>
-
-  </div>
-</div>
-
-<div class="section contact" id="contact">
-  <h2>Contact Us</h2>
-  <p>📍 2900 Steeles Ave East, Thornhill, Ontario</p>
-  <p>📞 416-817-1625</p>
-  <p>✉️ Yardina404@outlook.com</p>
-</div>
-
-<footer>
-  © 2026 Yardina Food. All rights reserved.
-</footer>
-
+      alert(`Redirecting to payment… Total: $${total}`);
+      window.location.href = squareLink;
+      return false;
+    }
+  </script>
 </body>
 </html>
