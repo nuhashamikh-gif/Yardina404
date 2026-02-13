@@ -1,0 +1,49 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Yardina — Pre‑Order</title>
+<style>
+body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f9f7f3;margin:0;padding:0;color:#222;}
+header{background:#2f5d50;color:#fff;padding:40px 20px;text-align:center;}
+header h1{margin:0;font-size:2.4rem;}
+header a{color:#fff;text-decoration:underline;}
+section{max-width:700px;margin:40px auto;background:#fff;padding:30px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.1);}
+label{display:block;margin-top:15px;font-weight:bold;}
+input,textarea{width:100%;padding:10px;margin-top:5px;border-radius:6px;border:1px solid #ccc;font-size:1rem;}
+button{margin-top:20px;padding:12px 24px;background:#2f5d50;color:#fff;border:none;border-radius:6px;font-size:1rem;cursor:pointer;}
+button:hover{background:#244a38;}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Pre‑Order from Yardina</h1>
+<p><a href="index.html">← Back to Home</a></p>
+</header>
+
+<section>
+<h2>Place Your Pre‑Order</h2>
+<p>Fill out the form below and we will contact you to confirm your order.</p>
+
+<form action="mailto:yardina404@outlook.com" method="POST" enctype="text/plain">
+<label>Your Name</label>
+<input type="text" name="Name" required />
+
+<label>Phone Number</label>
+<input type="text" name="Phone" required />
+
+<label>Email</label>
+<input type="email" name="Email" required />
+
+<label>Your Order</label>
+<textarea name="Order" rows="5" required></textarea>
+
+<button type="submit">Submit Pre‑Order</button>
+</form>
+</section>
+
+</body>
+</html>
