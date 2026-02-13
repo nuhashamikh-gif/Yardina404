@@ -1,44 +1,81 @@
-<!DOCTYPE html>
+
+   <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Pre‑Order Menu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pre-Order Menu</title>
+
 <style>
     body {
         font-family: Arial, sans-serif;
-        margin: 40px;
-        background: #f7f7f7;
+        margin: 0;
+        background: #f4f6f9;
     }
-    h1 {
+
+    header {
+        background: #222;
+        color: white;
+        padding: 20px;
         text-align: center;
     }
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 20px;
+        gap: 20px;
+        justify-content: center;
+    }
+
     table {
         width: 100%;
+        max-width: 500px;
         border-collapse: collapse;
-        margin-bottom: 25px;
         background: white;
+        border-radius: 8px;
+        overflow: hidden;
     }
+
     th, td {
         padding: 12px;
         border-bottom: 1px solid #ddd;
-        text-align: left;
     }
+
+    th {
+        background: #f1f1f1;
+    }
+
     .qty-btn {
-        padding: 5px 10px;
-        cursor: pointer;
+        padding: 6px 10px;
         background: #333;
         color: white;
         border: none;
         border-radius: 4px;
+        cursor: pointer;
     }
-    #summary {
+
+    .summary {
         background: white;
         padding: 20px;
-        border-radius: 6px;
-        width: 300px;
+        border-radius: 8px;
+        width: 100%;
+        max-width: 350px;
     }
-    #placeOrder {
-        margin-top: 20px;
+
+    .summary h3 {
+        margin-top: 0;
+    }
+
+    input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 12px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+    }
+
+    button {
         padding: 12px;
         width: 100%;
         background: #28a745;
@@ -48,56 +85,77 @@
         font-size: 16px;
         cursor: pointer;
     }
+
+    button:hover {
+        background: #218838;
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
 </style>
 </head>
 
 <body>
 
-<h1>Pre‑Order Your Meal</h1>
+<header>
+    <h1>Pre-Order Your Meal</h1>
+</header>
 
-<!-- MENU TABLE -->
-<table>
-    <tr><th>Item</th><th>Price</th><th>Qty</th></tr>
+<div class="container">
 
-    <tr>
-        <td>Classic Burger</td>
-        <td>$8.99</td>
-        <td>
-            <button class="qty-btn" onclick="changeQty('burger', -1)">–</button>
-            <span id="burger">0</span>
-            <button class="qty-btn" onclick="changeQty('burger', 1)">+</button>
-        </td>
-    </tr>
+    <!-- MENU -->
+    <table>
+        <tr><th>Item</th><th>Price</th><th>Qty</th></tr>
 
-    <tr>
-        <td>Fries</td>
-        <td>$3.49</td>
-        <td>
-            <button class="qty-btn" onclick="changeQty('fries', -1)">–</button>
-            <span id="fries">0</span>
-            <button class="qty-btn" onclick="changeQty('fries', 1)">+</button>
-        </td>
-    </tr>
+        <tr>
+            <td>Classic Burger</td>
+            <td>$8.99</td>
+            <td>
+                <button class="qty-btn" onclick="changeQty('burger', -1)">–</button>
+                <span id="burger">0</span>
+                <button class="qty-btn" onclick="changeQty('burger', 1)">+</button>
+            </td>
+        </tr>
 
-    <tr>
-        <td>Soda</td>
-        <td>$1.99</td>
-        <td>
-            <button class="qty-btn" onclick="changeQty('soda', -1)">–</button>
-            <span id="soda">0</span>
-            <button class="qty-btn" onclick="changeQty('soda', 1)">+</button>
-        </td>
-    </tr>
-</table>
+        <tr>
+            <td>Fries</td>
+            <td>$3.49</td>
+            <td>
+                <button class="qty-btn" onclick="changeQty('fries', -1)">–</button>
+                <span id="fries">0</span>
+                <button class="qty-btn" onclick="changeQty('fries', 1)">+</button>
+            </td>
+        </tr>
 
-<!-- ORDER SUMMARY -->
-<div id="summary">
-    <h3>Your Total</h3>
-    <p>Subtotal: $<span id="subtotal">0.00</span></p>
-    <p>Tax (13%): $<span id="tax">0.00</span></p>
-    <p><strong>Total: $<span id="total">0.00</span></strong></p>
+        <tr>
+            <td>Soda</td>
+            <td>$1.99</td>
+            <td>
+                <button class="qty-btn" onclick="changeQty('soda', -1)">–</button>
+                <span id="soda">0</span>
+                <button class="qty-btn" onclick="changeQty('soda', 1)">+</button>
+            </td>
+        </tr>
+    </table>
 
-    <button id="placeOrder">Place Order</button>
+    <!-- ORDER SUMMARY -->
+    <div class="summary">
+        <h3>Your Total</h3>
+        <p>Subtotal: $<span id="subtotal">0.00</span></p>
+        <p>Tax (13%): $<span id="tax">0.00</span></p>
+        <p><strong>Total: $<span id="total">0.00</span></strong></p>
+
+        <h3>Customer Info</h3>
+        <input type="text" id="customerName" placeholder="Your Name">
+        <input type="time" id="pickupTime">
+
+        <button id="placeOrder">Place Order</button>
+    </div>
+
 </div>
 
 <script>
@@ -108,17 +166,22 @@
     };
 
     function changeQty(item, amount) {
-        let qty = parseInt(document.getElementById(item).innerText);
+        let qtyElement = document.getElementById(item);
+        let qty = parseInt(qtyElement.innerText);
         qty = Math.max(0, qty + amount);
-        document.getElementById(item).innerText = qty;
+        qtyElement.innerText = qty;
         updateTotal();
     }
 
     function updateTotal() {
-        let subtotal = 
-            document.getElementById("burger").innerText * prices.burger +
-            document.getElementById("fries").innerText * prices.fries +
-            document.getElementById("soda").innerText * prices.soda;
+        let burgerQty = parseInt(document.getElementById("burger").innerText);
+        let friesQty = parseInt(document.getElementById("fries").innerText);
+        let sodaQty = parseInt(document.getElementById("soda").innerText);
+
+        let subtotal =
+            burgerQty * prices.burger +
+            friesQty * prices.fries +
+            sodaQty * prices.soda;
 
         let tax = subtotal * 0.13;
         let total = subtotal + tax;
@@ -127,8 +190,39 @@
         document.getElementById("tax").innerText = tax.toFixed(2);
         document.getElementById("total").innerText = total.toFixed(2);
     }
+
+    document.getElementById("placeOrder").addEventListener("click", function () {
+
+        let total = parseFloat(document.getElementById("total").innerText);
+        let name = document.getElementById("customerName").value.trim();
+        let time = document.getElementById("pickupTime").value;
+
+        if (total === 0) {
+            alert("Please add items to your order.");
+            return;
+        }
+
+        if (name === "" || time === "") {
+            alert("Please enter your name and pickup time.");
+            return;
+        }
+
+        alert(
+            "Thank you " + name +
+            "!\nYour order total is $" + total.toFixed(2) +
+            "\nPickup time: " + time
+        );
+
+        // Reset cart
+        document.getElementById("burger").innerText = 0;
+        document.getElementById("fries").innerText = 0;
+        document.getElementById("soda").innerText = 0;
+        document.getElementById("customerName").value = "";
+        document.getElementById("pickupTime").value = "";
+
+        updateTotal();
+    });
 </script>
 
 </body>
 </html>
-
