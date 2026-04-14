@@ -570,6 +570,25 @@ footer {
 </section>
 
 <!-- Add your menu, order form, gallery, etc. here (same as before) -->
+<section id="menua" class="menu-section">
+  <h2>Menu A</h2>
+
+  <div class="menu-image">
+    <img src="images/lunchspecial.png" alt="Lunch Specials Menu">
+  </div>
+
+  <div class="menu-image">
+    <img src="images/sweetspecial.png" alt="Tea Coffee Desserts Menu">
+  </div>
+
+  <div class="menu-image">
+    <img src="images/drinkspecial.png" alt="Drinks Menu">
+  </div>
+
+  <div class="menu-image">
+    <img src="images/breakfastspecial.png" alt="Breakfast Menu">
+  </div>
+</section>
 
 <!-- Floating Order Now Button -->
 <a href="https://square.link/u/5ckYGFZJ" target="_blank" id="floatingOrderBtn">Order Now</a>
