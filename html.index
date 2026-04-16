@@ -508,7 +508,7 @@ footer {
             <div class="logo-circle">YARDINA<br>404</div>
             <div>
                 <div class="logo-text-main">YARDINA404</div>
-                <div class="logo-text-sub">Falafel • Shawarma • Grill</div>
+                <div class="logo-text-sub">Falafel • Shawarma • Pizza  • Manakesh  • Baklawa  • Iraqi Tea and Turkesh Coffee </div>
             </div>
         </div>
         <nav>
@@ -535,26 +535,29 @@ footer {
         <div class="hero-cta">
             <button class="btn-primary" onclick="document.getElementById('order-form').scrollIntoView({behavior:'smooth'})">Order Now</button>
             <button class="btn-outline" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">View Full Menu</button>
-        </div>
+            <button class="btn-outline" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Gallery</button>
+
+
+ 
 
         <div class="hero-hours">
-            Open daily • 11:00 AM – 10:00 PM<br>
-            123 Main Street, Newmarket, ON
+            Open Friday to Sunday • 10:00 AM – 6:00 PM<br>
+            2900 Steels Avenue East, unit 5 and 6 Thornhill Ontario
         </div>
     </div>
 
     <div class="hero-image">
         <div class="hero-slider" id="heroSlider">
             <div class="hero-slide active">
-                <img src="images/Falafel platter 3.jpg" alt="Falafel platter">
+                <img src="Pizza.jpg" alt="Falafel platter">
                 <div class="hero-badge">Signature Falafel Platter • Customer Favorite</div>
             </div>
             <div class="hero-slide">
-                <img src="images/veggie platter.jpg" alt="Veggie platter">
+                <img src="falafel sandwitch.jpg" alt="Veggie platter">
                 <div class="hero-badge">Veggie Platter • Fresh & Colorful</div>
             </div>
             <div class="hero-slide">
-                <img src="images/vegetable pizza.jpg" alt="Vegetable pizza">
+                <img src="Pasta.jpg" alt="Vegetable pizza">
                 <div class="hero-badge">Vegetable Pizza • Oven Baked</div>
             </div>
             <div class="hero-slide">
